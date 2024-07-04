@@ -80,7 +80,6 @@
             transform: translate(-50%, -50%);
             color: #fff;
             font-size: 2em;
-            background-color: rgba(0, 0, 0, 0.5);
             padding: 10px 20px;
             border-radius: 10px;
         }
@@ -143,7 +142,7 @@
         }
 
         /* Media Queries */
-        @media (max-width: 220px) {
+        @media (max-width: 768px) {
             nav ul {
                 display: none;
                 flex-direction: column;
@@ -158,27 +157,6 @@
             nav ul.active {
                 display: flex;
             }
-            .welcome {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-           
-    
-    transform: translate(-50%, -50%);
-   
-            color: #fff;
-          
-          
-            padding: 30px 40px;
-            border-radius: 10px;
-        }
-            nav ul li {
-                text-align: center;
-                margin: 10px 0;
-            }
-            .menu-item {
-                flex: 1 1 calc(45% - 20px);
-            }
             .mobile-menu-btn {
                 display: block;
                 position: absolute;
@@ -188,16 +166,25 @@
                 z-index: 1500;
                 color: #fff;
                 font-size: 1.5em;
-                display: none;
             }
             .mobile-menu-btn.active {
                 color: #4CAF50;
+            }
+            nav ul li {
+                text-align: center;
+                margin: 10px 0;
+            }
+            .menu-item {
+                flex: 1 1 calc(45% - 20px);
             }
         }
 
         @media (max-width: 550px) {
             .menu-item {
                 flex: 1 1 calc(100% - 20px);
+            }
+            .welcome {
+                font-size: 1.5em;
             }
         }
     </style>
@@ -215,6 +202,7 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
         </div>
     </header>
 
