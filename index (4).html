@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Name</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #000; /* Changed to black */
+            color: #fff;
+            padding: 10px 0;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        header .logo img {
+            height: 40px; /* Adjust the height as needed */
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .welcome {
+            text-align: center; /* Center the text */
+            margin: 20px 0;
+        }
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            justify-content: space-around;
+        }
+        .menu-category {
+            flex-basis: 100%;
+            text-align: center;
+            margin: 20px 0 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .menu-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            flex: 1 1 calc(30% - 20px);
+            box-sizing: border-box;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .menu-item:hover {
+            transform: scale(1.05);
+        }
+        .menu-item h3 {
+            margin: 0 0 10px;
+        }
+        .menu-item p {
+            margin: 10px 0;
+        }
+        .menu-item button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+        }
+        .menu-item button:hover {
+            background-color: #45a049;
+        }
+        .slider {
+            position: relative;
+            max-width: 100%;
+            margin: 20px auto;
+        }
+        .slides img {
+            width: 100%;
+            display: none;
+        }
+        .slides img.active {
+            display: block;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #000;
+                padding: 10px 0;
+                z-index: 1000;
+            }
+            nav ul.active {
+                display: flex;
+            }
+            nav ul li {
+                text-align: center;
+                margin: 10px 0;
+            }
+            .menu-item {
+                flex: 1 1 calc(45% - 20px);
+            }
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                cursor: pointer;
+                z-index: 1500;
+                color: #fff;
+                font-size: 1.5em;
+                display: none;
+            }
+            .mobile-menu-btn.active {
+                color: #4CAF50;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-item {
+                flex: 1 1 calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logo-url.png" alt="Logo"> <!-- Replace logo-url.png with the actual URL of the logo image -->
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)">Locations</a>
+                        <div class="dropdown-content">
+                            <a href="#location1">Location 1</a>
+                            <a href="#location2">Location 2</a>
+                            <a href="#location3">Location 3</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="welcome">
+            <h1>Welcome to Banjo's the Food Chain</h1>
+        </section>
+
+        <div class="slider">
+            <div class="slides">
+                <img src="slide1-url.jpg" alt="Slide 1" class="active"> <!-- Replace slide1-url.jpg with the actual URL of the slide image -->
+                <img src="slide2-url.jpg" alt="Slide 2"> <!-- Replace slide2-url.jpg with the actual URL of the slide image -->
+                <img src="slide3-url.jpg" alt="Slide 3"> <!-- Replace slide3-url.jpg with the actual URL of the slide image -->
+            </div>
+        </div>
+
+        <div class="menu">
+            <!-- Beverages -->
+            <div class="menu-category">Beverages</div>
+            <div class="menu-item">
+                <h3>Thick Cold Coffee</h3>
+                <p>69</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Hot Chocolate</h3>
+                <p>69</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Lemon Iced Tea</h3>
+                <p>79</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Strawberry Iced Tea</h3>
+                <p>109</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Mint Mojito</h3>
+                <p>119</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Blueberry Mojito</h3>
+                <p>119</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Mango Milkshake</h3>
+                <p>119</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Strawberry Milkshake</h3>
+                <p>119</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Oreo Milkshake</h3>
+                <p>139</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Kitkat Milkshake</h3>
+                <p>139</p>
+                <button>Book</button>
+            </div>
+            <!-- Sandwiches -->
+            <div class="menu-category">Sandwiches</div>
+            <div class="menu-item">
+                <h3>Chilli Garlic Toast</h3>
+                <p>49</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Veg Grilled Sandwich</h3>
+                <p>79</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Tandoori Paneer Sandwich</h3>
+                <p>129</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Veg Cheese Grilled Sandwich</h3>
+                <p>139</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Veg Club Sandwich</h3>
+                <p>179</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Omelette Sandwich</h3>
+                <p>79</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Chicken Grilled Sandwich</h3>
+                <p>129</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Chicken Makhani Sandwich</h3>
+                <p>149</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Chicken Club Sandwich</h3>
+                <p>239</p>
+                <button>Book</button>
+            </div>
+            <!-- Fries -->
+            <div class="menu-category">Fries</div>
+            <div class="menu-item">
+                <h3>French Fries Plain</h3>
+                <p>99</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Masala Fries</h3>
+                <p>119</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Chilli Garlic Fries</h3>
+                <p>139</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Peri Peri Fries</h3>
+                <p>139</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Cheesy Fries</h3>
+                <p>139</p>
+                <button>Book</button>
+            </div>
+            <!-- Maggi -->
+            <div class="menu-category">Maggi</div>
+            <div class="menu-item">
+                <h3>Masala Maggi</h3>
+                <p>59</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Butter Masala Maggi</h3>
+                <p>69</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Cheese Maggi</h3>
+                <p>79</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Vegetable Maggi</h3>
+                <p>99</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Chicken Maggi</h3>
+                <p>119</p>
+                <button>Book</button>
+            </div>
+            <!-- Tasty Bites -->
+            <div class="menu-category">Tasty Bites</div>
+            <div class="menu-item">
+                <h3>Red Cheese Pasta</h3>
+                <p>139</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Potato Cheese Shots (5 pcs)</h3>
+                <p>109</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>White Cheese Pasta</h3>
+                <p>149</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Cheese Corn Balls (6 pcs)</h3>
+                <p>119</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Chicken Nuggets (6 pcs)</h3>
+                <p>139</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Chicken Cheese Balls (6 pcs)</h3>
+                <p>149</p>
+                <button>Book</button>
+            </div>
+            <!-- Salads -->
+            <div class="menu-category">Salads</div>
+            <div class="menu-item">
+                <h3>Veg Salad</h3>
+                <p>159</p>
+                <button>Book</button>
+            </div>
+            <div class="menu-item">
+                <h3>Chicken Salad</h3>
+                <p>189</p>
+                <button>Book</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Designed and Animated by <a href="https://www.skyoudtechnologies.com">Skyoud Technologies</a>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.querySelector('nav ul');
+            menu.classList.toggle('active');
+            const btn = document.querySelector('.mobile-menu-btn');
+            btn.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
