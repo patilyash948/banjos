@@ -195,7 +195,7 @@
                     <li><a href="#contact">Contact</a></li>
                     
                 </ul>
-                <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
+                
             </nav>
         </div>
     </header>
@@ -425,6 +425,26 @@
             const btn = document.querySelector('.mobile-menu-btn');
             btn.classList.toggle('active');
         }
+    </script>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slides img');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        setInterval(nextSlide, 4000); // Change image every 4 seconds
     </script>
 </body>
 </html>
