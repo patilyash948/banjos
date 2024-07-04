@@ -23,7 +23,6 @@
         }
         header .logo img {
             height: 40px; /* Adjust the height as needed */
-            left: 20 px;
         }
         nav ul {
             list-style: none;
@@ -62,9 +61,28 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
+        .slider {
+            position: relative;
+            max-width: 100%;
+            margin: 20px auto;
+        }
+        .slides img {
+            width: 100%;
+            display: none;
+        }
+        .slides img.active {
+            display: block;
+        }
         .welcome {
-            text-align: center; /* Center the text */
-            margin: 20px 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 2em;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 10px;
         }
         .menu {
             display: flex;
@@ -108,18 +126,6 @@
         }
         .menu-item button:hover {
             background-color: #45a049;
-        }
-        .slider {
-            position: relative;
-            max-width: 100%;
-            margin: 20px auto;
-        }
-        .slides img {
-            width: 100%;
-            display: none;
-        }
-        .slides img.active {
-            display: block;
         }
         footer {
             background: #333;
@@ -193,23 +199,20 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    
                 </ul>
-                
             </nav>
         </div>
     </header>
 
     <main>
-        <section class="welcome">
-            <h1>Welcome to Banjo's the Food Chain</h1>
-        </section>
-
         <div class="slider">
             <div class="slides">
                 <img src="slide1-url.jpg" alt="Slide 1" class="active"> <!-- Replace slide1-url.jpg with the actual URL of the slide image -->
                 <img src="slide2-url.jpg" alt="Slide 2"> <!-- Replace slide2-url.jpg with the actual URL of the slide image -->
                 <img src="slide3-url.jpg" alt="Slide 3"> <!-- Replace slide3-url.jpg with the actual URL of the slide image -->
+            </div>
+            <div class="welcome">
+                <h1>Welcome to Banjo's the Food Chain</h1>
             </div>
         </div>
 
