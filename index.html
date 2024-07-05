@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banjo's Food Chain</title>
+    <title>Website Name</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -152,46 +152,6 @@
         footer a:hover {
             text-decoration: underline;
         }
-        section {
-            padding: 20px;
-        }
-        #about {
-            display: none;
-        }
-        #contact {
-            display: none;
-        }
-        .active-section {
-            display: block;
-        }
-        form {
-            max-width: 600px;
-            margin: auto;
-        }
-        form div {
-            margin-bottom: 15px;
-        }
-        form label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        form input, form textarea {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-        form button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            border-radius: 5px;
-        }
-        form button:hover {
-            background-color: #45a049;
-        }
 
         /* Media Queries */
         @media (max-width: 768px) {
@@ -249,9 +209,9 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home" onclick="showSection('home')">Home</a></li>
-                    <li><a href="#about" onclick="showSection('about')">About</a></li>
-                    <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
@@ -259,233 +219,227 @@
     </header>
 
     <main>
-        <div id="home">
-            <div class="slider">
-                <div class="slides">
-                    <img src="slide1-url.jpg" alt="Slide 1" class="active">
-                    <img src="slide2-url.jpg" alt="Slide 2">
-                    <img src="slide3-url.jpg" alt="Slide 3">
-                </div>
-                <div class="welcome">
-                    <h1>Welcome to Banjo's the Food Chain</h1>
-                </div>
+        <div class="slider">
+            <div class="slides">
+                <img src="slide1-url.jpg" alt="Slide 1" class="active">
+                <img src="slide2-url.jpg" alt="Slide 2">
+                <img src="slide3-url.jpg" alt="Slide 3">
             </div>
-
-            <div class="menu">
-                <div class="menu-category" onclick="toggleMenu('beverages')">Beverages</div>
-                <div class="menu-items" id="beverages">
-                    <div class="menu-item">
-                        <h3>Thick Cold Coffee</h3>
-                        <p>69</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Hot Chocolate</h3>
-                        <p>69</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Lemon Iced Tea</h3>
-                        <p>79</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Strawberry Iced Tea</h3>
-                        <p>109</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Mint Mojito</h3>
-                        <p>119</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Blueberry Mojito</h3>
-                        <p>119</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Mango Milkshake</h3>
-                        <p>119</p>
-                        <button>Book</button>
-                    </div>
-                </div>
-
-                <div class="menu-category" onclick="toggleMenu('sandwiches')">Sandwiches</div>
-                <div class="menu-items" id="sandwiches">
-                    <div class="menu-item">
-                        <h3>Veg Grilled Sandwich</h3>
-                        <p>79</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Tandoori Paneer Sandwich</h3>
-                        <p>129</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Veg Cheese Grilled Sandwich</h3>
-                        <p>139</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Veg Club Sandwich</h3>
-                        <p>179</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Omelette Sandwich</h3>
-                        <p>79</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Chicken Grilled Sandwich</h3>
-                        <p>129</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Chicken Makhani Sandwich</h3>
-                        <p>149</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Chicken Club Sandwich</h3>
-                        <p>239</p>
-                        <button>Book</button>
-                    </div>
-                </div>
-
-                <div class="menu-category" onclick="toggleMenu('fries')">Fries</div>
-                <div class="menu-items" id="fries">
-                    <div class="menu-item">
-                        <h3>French Fries Plain</h3>
-                        <p>99</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Masala Fries</h3>
-                        <p>119</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Chilli Garlic Fries</h3>
-                        <p>139</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Peri Peri Fries</h3>
-                        <p>139</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Cheesy Fries</h3>
-                        <p>139</p>
-                        <button>Book</button>
-                    </div>
-                </div>
-
-                <div class="menu-category" onclick="toggleMenu('maggi')">Maggi</div>
-                <div class="menu-items" id="maggi">
-                    <div class="menu-item">
-                        <h3>Masala Maggi</h3>
-                        <p>59</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Butter Masala Maggi</h3>
-                        <p>69</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Cheese Maggi</h3>
-                        <p>79</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Vegetable Maggi</h3>
-                        <p>99</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Chicken Maggi</h3>
-                        <p>119</p>
-                        <button>Book</button>
-                    </div>
-                </div>
-
-                <div class="menu-category" onclick="toggleMenu('tasty-bites')">Tasty Bites</div>
-                <div class="menu-items" id="tasty-bites">
-                    <div class="menu-item">
-                        <h3>Red Cheese Pasta</h3>
-                        <p>139</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Potato Cheese Shots (5 pcs)</h3>
-                        <p>109</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>White Cheese Pasta</h3>
-                        <p>149</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Cheese Corn Balls (6 pcs)</h3>
-                        <p>119</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Chicken Nuggets (6 pcs)</h3>
-                        <p>139</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Chicken Cheese Balls (6 pcs)</h3>
-                        <p>149</p>
-                        <button>Book</button>
-                    </div>
-                </div>
-
-                <div class="menu-category" onclick="toggleMenu('salads')">Salads</div>
-                <div class="menu-items" id="salads">
-                    <div class="menu-item">
-                        <h3>Veg Salad</h3>
-                        <p>159</p>
-                        <button>Book</button>
-                    </div>
-                    <div class="menu-item">
-                        <h3>Chicken Salad</h3>
-                        <p>189</p>
-                        <button>Book</button>
-                    </div>
-                </div>
+            <div class="welcome">
+                <h1>Welcome to Banjo's the Food Chain</h1>
             </div>
         </div>
 
-        <section id="about" class="active-section">
-            <h2>About Banjo's Food Chain</h2>
-            <p>Banjo's Food Chain is a leading food service provider known for its diverse menu and delicious offerings. We are dedicated to delivering high-quality food and exceptional service to our customers. Our menu features a wide range of options, including beverages, sandwiches, fries, maggi, tasty bites, and salads, ensuring that there is something for everyone. At Banjo's, we prioritize freshness and quality, using only the best ingredients to prepare our dishes. Join us for a delightful dining experience!</p>
-        </section>
+        <div class="menu">
+            <div class="menu-category" onclick="toggleMenu('beverages')">Beverages</div>
+            <div class="menu-items" id="beverages">
+                <div class="menu-item">
+                    <h3>Thick Cold Coffee</h3>
+                    <p>69</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Hot Chocolate</h3>
+                    <p>69</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Lemon Iced Tea</h3>
+                    <p>79</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Strawberry Iced Tea</h3>
+                    <p>109</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Mint Mojito</h3>
+                    <p>119</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Blueberry Mojito</h3>
+                    <p>119</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Mango Milkshake</h3>
+                    <p>119</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Strawberry Milkshake</h3>
+                    <p>119</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Oreo Milkshake</h3>
+                    <p>139</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Kitkat Milkshake</h3>
+                    <p>139</p>
+                    <button>Book</button>
+                </div>
+            </div>
 
-        <section id="contact" class="active-section">
-            <h2>Contact Us</h2>
-            <form>
-                <div>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+            <div class="menu-category" onclick="toggleMenu('sandwiches')">Sandwiches</div>
+            <div class="menu-items" id="sandwiches">
+                <div class="menu-item">
+                    <h3>Chilli Garlic Toast</h3>
+                    <p>49</p>
+                    <button>Book</button>
                 </div>
-                <div>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                <div class="menu-item">
+                    <h3>Veg Grilled Sandwich</h3>
+                    <p>79</p>
+                    <button>Book</button>
                 </div>
-                <div>
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
+                <div class="menu-item">
+                    <h3>Tandoori Paneer Sandwich</h3>
+                    <p>129</p>
+                    <button>Book</button>
                 </div>
-                <button type="submit">Submit</button>
-            </form>
-        </section>
+                <div class="menu-item">
+                    <h3>Veg Cheese Grilled Sandwich</h3>
+                    <p>139</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Veg Club Sandwich</h3>
+                    <p>179</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Omelette Sandwich</h3>
+                    <p>79</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Chicken Grilled Sandwich</h3>
+                    <p>129</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Chicken Makhani Sandwich</h3>
+                    <p>149</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Chicken Club Sandwich</h3>
+                    <p>239</p>
+                    <button>Book</button>
+                </div>
+            </div>
+
+            <div class="menu-category" onclick="toggleMenu('fries')">Fries</div>
+            <div class="menu-items" id="fries">
+                <div class="menu-item">
+                    <h3>French Fries Plain</h3>
+                    <p>99</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Masala Fries</h3>
+                    <p>119</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Chilli Garlic Fries</h3>
+                    <p>139</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Peri Peri Fries</h3>
+                    <p>139</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Cheesy Fries</h3>
+                    <p>139</p>
+                    <button>Book</button>
+                </div>
+            </div>
+
+            <div class="menu-category" onclick="toggleMenu('maggi')">Maggi</div>
+            <div class="menu-items" id="maggi">
+                <div class="menu-item">
+                    <h3>Masala Maggi</h3>
+                    <p>59</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Butter Masala Maggi</h3>
+                    <p>69</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Cheese Maggi</h3>
+                    <p>79</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Vegetable Maggi</h3>
+                    <p>99</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Chicken Maggi</h3>
+                    <p>119</p>
+                    <button>Book</button>
+                </div>
+            </div>
+
+            <div class="menu-category" onclick="toggleMenu('tasty-bites')">Tasty Bites</div>
+            <div class="menu-items" id="tasty-bites">
+                <div class="menu-item">
+                    <h3>Red Cheese Pasta</h3>
+                    <p>139</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Potato Cheese Shots (5 pcs)</h3>
+                    <p>109</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>White Cheese Pasta</h3>
+                    <p>149</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Cheese Corn Balls (6 pcs)</h3>
+                    <p>119</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Chicken Nuggets (6 pcs)</h3>
+                    <p>139</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Chicken Cheese Balls (6 pcs)</h3>
+                    <p>149</p>
+                    <button>Book</button>
+                </div>
+            </div>
+
+            <div class="menu-category" onclick="toggleMenu('salads')">Salads</div>
+            <div class="menu-items" id="salads">
+                <div class="menu-item">
+                    <h3>Veg Salad</h3>
+                    <p>159</p>
+                    <button>Book</button>
+                </div>
+                <div class="menu-item">
+                    <h3>Chicken Salad</h3>
+                    <p>189</p>
+                    <button>Book</button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -504,14 +458,8 @@
             const menu = document.getElementById(category);
             menu.classList.toggle('active');
         }
-
-        function showSection(section) {
-            document.querySelectorAll('section').forEach(sec => {
-                sec.classList.remove('active-section');
-            });
-            document.getElementById(section).classList.add('active-section');
-        }
-
+    </script>
+    <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slides img');
 
