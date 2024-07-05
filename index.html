@@ -3,481 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Name</title>
+    <title>Banjo's Food Chain</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
+
         header {
-            background: #000;
+            background-color: #333;
             color: #fff;
             padding: 10px 0;
+            text-align: center;
         }
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-        header .logo img {
-            height: 40px;
-        }
+
         nav ul {
-            list-style: none;
-            margin: 0;
+            list-style-type: none;
             padding: 0;
-            display: flex;
+            text-align: center;
         }
+
         nav ul li {
-            margin-right: 20px;
+            display: inline;
+            margin: 0 10px;
         }
+
         nav ul li a {
             color: #fff;
             text-decoration: none;
         }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content {
+
+        .mobile-menu-btn {
             display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
         }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
+
+        .slides {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            height: 300px;
         }
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .slider {
-            position: relative;
-            max-width: 100%;
-            margin: 20px auto;
-        }
+
         .slides img {
             width: 100%;
             display: none;
         }
+
         .slides img.active {
             display: block;
         }
-        .welcome {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #fff;
-            font-size: 2em;
-            padding: 10px 20px;
-            border-radius: 10px;
-        }
-        .menu {
-            padding: 20px;
-        }
+
         .menu-category {
-            text-align: center;
-            margin: 20px 0 10px;
-            font-size: 1.5em;
-            font-weight: bold;
+            background-color: #f4f4f4;
             cursor: pointer;
             padding: 10px;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: background-color 0.3s;
+            margin: 5px 0;
         }
-        .menu-category:hover {
-            background-color: #f9f9f9;
-        }
+
         .menu-items {
             display: none;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .menu-items.active {
-            display: flex;
-        }
-        .menu-item {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin: 10px;
-            flex: 1 1 calc(30% - 20px);
-            box-sizing: border-box;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        .menu-item:hover {
-            transform: scale(1.05);
-        }
-        .menu-item h3 {
-            margin: 0 0 10px;
-        }
-        .menu-item p {
             margin: 10px 0;
         }
-        .menu-item button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            border-radius: 5px;
+
+        .menu-items.active {
+            display: block;
         }
-        .menu-item button:hover {
-            background-color: #45a049;
+
+        .menu-item {
+            margin: 5px 0;
         }
+
+        .section {
+            display: none;
+        }
+
+        .section.active-section {
+            display: block;
+        }
+
+        form div {
+            margin-bottom: 10px;
+        }
+
         footer {
-            background: #333;
-            color: #fff;
             text-align: center;
             padding: 10px 0;
-            margin-top: 20px;
-        }
-        footer a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Media Queries */
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                left: 20px;
-                width: 100%;
-                background-color: #000;
-                padding: 10px 0;
-                z-index: 1000;
-            }
-            nav ul.active {
-                display: flex;
-            }
-            .mobile-menu-btn {
-                display: block;
-                position: absolute;
-                top: 15px;
-                right: 20px;
-                cursor: pointer;
-                z-index: 1500;
-                color: #fff;
-                font-size: 1.5em;
-            }
-            .mobile-menu-btn.active {
-                color: #4CAF50;
-            }
-            nav ul li {
-                text-align: center;
-                margin: 10px 0;
-            }
-            .menu-item {
-                flex: 1 1 calc(45% - 20px);
-            }
-        }
-
-        @media (max-width: 550px) {
-            .menu-item {
-                flex: 1 1 calc(100% - 20px);
-            }
-            .welcome {
-                font-size: 1.5em;
-            }
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="logo">
-                <img src="logo-url.png" alt="Logo">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
-        </div>
+        <h1>Banjo's Food Chain</h1>
     </header>
-
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('home')">Home</a></li>
+            <li><a href="#" onclick="showSection('about')">About</a></li>
+            <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+        </ul>
+    </nav>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
     <main>
-        <div class="slider">
+        <div id="home" class="section active-section">
             <div class="slides">
-                <img src="slide1-url.jpg" alt="Slide 1" class="active">
-                <img src="slide2-url.jpg" alt="Slide 2">
-                <img src="slide3-url.jpg" alt="Slide 3">
+                <img src="slide1.jpg" alt="Slide 1" class="active">
+                <img src="slide2.jpg" alt="Slide 2">
+                <img src="slide3.jpg" alt="Slide 3">
             </div>
-            <div class="welcome">
-                <h1>Welcome to Banjo's the Food Chain</h1>
+            <div class="menu">
+                <div class="menu-category" onclick="toggleMenu('beverages')">Beverages</div>
+                <div class="menu-items" id="beverages">
+                    <div class="menu-item">
+                        <h3>Masala Lemonade</h3>
+                        <p>49</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Cold Coffee</h3>
+                        <p>99</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Banana Milkshake</h3>
+                        <p>119</p>
+                        <button>Book</button>
+                    </div>
+                </div>
+
+                <div class="menu-category" onclick="toggleMenu('sandwiches')">Sandwiches</div>
+                <div class="menu-items" id="sandwiches">
+                    <div class="menu-item">
+                        <h3>Veg Grilled Sandwich</h3>
+                        <p>79</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Tandoori Paneer Sandwich</h3>
+                        <p>129</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Veg Cheese Grilled Sandwich</h3>
+                        <p>139</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Veg Club Sandwich</h3>
+                        <p>179</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Omelette Sandwich</h3>
+                        <p>79</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Chicken Grilled Sandwich</h3>
+                        <p>129</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Chicken Makhani Sandwich</h3>
+                        <p>149</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Chicken Club Sandwich</h3>
+                        <p>239</p>
+                        <button>Book</button>
+                    </div>
+                </div>
+
+                <div class="menu-category" onclick="toggleMenu('fries')">Fries</div>
+                <div class="menu-items" id="fries">
+                    <div class="menu-item">
+                        <h3>French Fries Plain</h3>
+                        <p>99</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Masala Fries</h3>
+                        <p>119</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Chilli Garlic Fries</h3>
+                        <p>139</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Peri Peri Fries</h3>
+                        <p>139</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Cheesy Fries</h3>
+                        <p>139</p>
+                        <button>Book</button>
+                    </div>
+                </div>
+
+                <div class="menu-category" onclick="toggleMenu('maggi')">Maggi</div>
+                <div class="menu-items" id="maggi">
+                    <div class="menu-item">
+                        <h3>Masala Maggi</h3>
+                        <p>59</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Butter Masala Maggi</h3>
+                        <p>69</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Cheese Maggi</h3>
+                        <p>79</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Vegetable Maggi</h3>
+                        <p>99</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Chicken Maggi</h3>
+                        <p>119</p>
+                        <button>Book</button>
+                    </div>
+                </div>
+
+                <div class="menu-category" onclick="toggleMenu('tasty-bites')">Tasty Bites</div>
+                <div class="menu-items" id="tasty-bites">
+                    <div class="menu-item">
+                        <h3>Red Cheese Pasta</h3>
+                        <p>139</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Potato Cheese Shots (5 pcs)</h3>
+                        <p>109</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>White Cheese Pasta</h3>
+                        <p>149</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Cheese Corn Balls (6 pcs)</h3>
+                        <p>119</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Chicken Nuggets (6 pcs)</h3>
+                        <p>139</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Chicken Cheese Balls (6 pcs)</h3>
+                        <p>149</p>
+                        <button>Book</button>
+                    </div>
+                </div>
+
+                <div class="menu-category" onclick="toggleMenu('salads')">Salads</div>
+                <div class="menu-items" id="salads">
+                    <div class="menu-item">
+                        <h3>Green Salad</h3>
+                        <p>49</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Vegetable Salad</h3>
+                        <p>79</p>
+                        <button>Book</button>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Chicken Salad</h3>
+                        <p>119</p>
+                        <button>Book</button>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="menu">
-            <div class="menu-category" onclick="toggleMenu('beverages')">Beverages</div>
-            <div class="menu-items" id="beverages">
-                <div class="menu-item">
-                    <h3>Thick Cold Coffee</h3>
-                    <p>69</p>
-                    <button>Book</button>
+        <div id="about" class="section">
+            <h2>About Banjo's Food Chain</h2>
+            <p>Banjo's Food Chain is a leading fast-food restaurant known for its delicious and diverse menu. We offer a wide range of items from beverages to sandwiches, fries, maggi, tasty bites, and salads. Our commitment to quality and customer satisfaction sets us apart. We strive to provide our customers with the best dining experience by using fresh ingredients and unique recipes.</p>
+        </div>
+        <div id="contact" class="section">
+            <h2>Contact Us</h2>
+            <form>
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
-                <div class="menu-item">
-                    <h3>Hot Chocolate</h3>
-                    <p>69</p>
-                    <button>Book</button>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
-                <div class="menu-item">
-                    <h3>Lemon Iced Tea</h3>
-                    <p>79</p>
-                    <button>Book</button>
+                <div>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
                 </div>
-                <div class="menu-item">
-                    <h3>Strawberry Iced Tea</h3>
-                    <p>109</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Mint Mojito</h3>
-                    <p>119</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Blueberry Mojito</h3>
-                    <p>119</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Mango Milkshake</h3>
-                    <p>119</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Strawberry Milkshake</h3>
-                    <p>119</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Oreo Milkshake</h3>
-                    <p>139</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Kitkat Milkshake</h3>
-                    <p>139</p>
-                    <button>Book</button>
-                </div>
-            </div>
-
-            <div class="menu-category" onclick="toggleMenu('sandwiches')">Sandwiches</div>
-            <div class="menu-items" id="sandwiches">
-                <div class="menu-item">
-                    <h3>Chilli Garlic Toast</h3>
-                    <p>49</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Veg Grilled Sandwich</h3>
-                    <p>79</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Tandoori Paneer Sandwich</h3>
-                    <p>129</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Veg Cheese Grilled Sandwich</h3>
-                    <p>139</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Veg Club Sandwich</h3>
-                    <p>179</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Omelette Sandwich</h3>
-                    <p>79</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Chicken Grilled Sandwich</h3>
-                    <p>129</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Chicken Makhani Sandwich</h3>
-                    <p>149</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Chicken Club Sandwich</h3>
-                    <p>239</p>
-                    <button>Book</button>
-                </div>
-            </div>
-
-            <div class="menu-category" onclick="toggleMenu('fries')">Fries</div>
-            <div class="menu-items" id="fries">
-                <div class="menu-item">
-                    <h3>French Fries Plain</h3>
-                    <p>99</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Masala Fries</h3>
-                    <p>119</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Chilli Garlic Fries</h3>
-                    <p>139</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Peri Peri Fries</h3>
-                    <p>139</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Cheesy Fries</h3>
-                    <p>139</p>
-                    <button>Book</button>
-                </div>
-            </div>
-
-            <div class="menu-category" onclick="toggleMenu('maggi')">Maggi</div>
-            <div class="menu-items" id="maggi">
-                <div class="menu-item">
-                    <h3>Masala Maggi</h3>
-                    <p>59</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Butter Masala Maggi</h3>
-                    <p>69</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Cheese Maggi</h3>
-                    <p>79</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Vegetable Maggi</h3>
-                    <p>99</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Chicken Maggi</h3>
-                    <p>119</p>
-                    <button>Book</button>
-                </div>
-            </div>
-
-            <div class="menu-category" onclick="toggleMenu('tasty-bites')">Tasty Bites</div>
-            <div class="menu-items" id="tasty-bites">
-                <div class="menu-item">
-                    <h3>Red Cheese Pasta</h3>
-                    <p>139</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Potato Cheese Shots (5 pcs)</h3>
-                    <p>109</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>White Cheese Pasta</h3>
-                    <p>149</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Cheese Corn Balls (6 pcs)</h3>
-                    <p>119</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Chicken Nuggets (6 pcs)</h3>
-                    <p>139</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Chicken Cheese Balls (6 pcs)</h3>
-                    <p>149</p>
-                    <button>Book</button>
-                </div>
-            </div>
-
-            <div class="menu-category" onclick="toggleMenu('salads')">Salads</div>
-            <div class="menu-items" id="salads">
-                <div class="menu-item">
-                    <h3>Veg Salad</h3>
-                    <p>159</p>
-                    <button>Book</button>
-                </div>
-                <div class="menu-item">
-                    <h3>Chicken Salad</h3>
-                    <p>189</p>
-                    <button>Book</button>
-                </div>
-            </div>
+                <button type="submit">Send</button>
+            </form>
         </div>
     </main>
-
     <footer>
-        Designed and Animated by <a href="https://www.skyoudtechnologies.com">Skyoud Technologies</a>
+        <p>&copy; 2024 Banjo's Food Chain</p>
     </footer>
-
     <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active-section');
+            });
+            document.getElementById(sectionId).classList.add('active-section');
+        }
+
         function toggleMobileMenu() {
             const menu = document.querySelector('nav ul');
-            menu.classList.toggle('active');
-            const btn = document.querySelector('.mobile-menu-btn');
-            btn.classList.toggle('active');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
         }
 
-        function toggleMenu(category) {
-            const menu = document.getElementById(category);
-            menu.classList.toggle('active');
+        function toggleMenu(categoryId) {
+            const menuItems = document.getElementById(categoryId);
+            menuItems.classList.toggle('active');
         }
-    </script>
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slides img');
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) {
-                    slide.classList.add('active');
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        setInterval(nextSlide, 4000);
     </script>
 </body>
 </html>
