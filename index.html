@@ -229,6 +229,12 @@
         </div>
     </header>
 
+
+<section id="about" class="about">
+        <p>I am running a franchisee of Banjo's The Food Chain and Creamy Nuts, basically operated from Nashik and Pune respectively. I have taken those franchisees under the name of the firm Ritesh Patil & Sons. I started the first quick service restaurant located between the towns of Savda and Faizpur to attract youngsters. I created a calm, beautiful, attractive, dark theme interior with a huge floor area and a mezzanine floor.</p>
+    </section>
+
+    
     <main>
         <div class="slider">
             <div class="slides">
@@ -566,6 +572,22 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
+    <script>
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 <!--End of Tawk.to Script-->
 </body>
 </html>
