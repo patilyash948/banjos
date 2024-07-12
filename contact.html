@@ -120,44 +120,40 @@ footer {
                 <img src="logo-url.png" alt="Logo">
             </div>
             <nav>
+                <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
         </div>
     </header>
 
-    
-
     <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <form class="contact-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form class="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
 
-            <button type="submit">Submit</button>
-        </form>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </section>
 
     <script>
         function toggleMobileMenu() {
             const nav = document.querySelector('nav ul');
-            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+            nav.classList.toggle('show');
         }
-
-        function toggleMenu(id) {
-            const menuItems = document.getElementById(id);
-            menuItems.style.display = menuItems.style.display === 'block' ? 'none' : 'block';
-        }
+    </script>
     </script>
     <footer>
         Designed and Animated by <a href="https://www.skyoudtechnologies.com">Skyoud Technologies</a>
