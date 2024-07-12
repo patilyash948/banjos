@@ -86,12 +86,20 @@
             text-align: justify; /* Justify text */
         }
 
+        .about .additional-content {
+            max-width: 600px;
+            margin: 20px auto;
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: left;
+        }
+
         @media (max-width: 768px) {
             .about {
                 padding: 30px 20px;
             }
 
-            .about p {
+            .about p, .about .additional-content {
                 max-width: 100%;
                 margin: 0 10px;
             }
@@ -119,7 +127,7 @@
                 padding: 20px 15px;
             }
 
-            .about p {
+            .about p, .about .additional-content {
                 margin: 0 10px;
                 font-size: 16px;
             }
@@ -144,7 +152,15 @@
     </header>
 
     <section class="about">
-        <p> We operate franchises of Banjo's The Food Chain and Creamy Nuts, based in Nashik and Pune respectively, under the firm Ritesh Patil & Sons. Our first quick-service restaurant is strategically located between the towns of Savda and Faizpur to attract young customers. We provide a serene, beautifully designed interior with a dark theme, spacious floor area, and a mezzanine floor, creating an inviting and stylish atmosphere.</p>
+        <p>We operate franchises of Banjo's The Food Chain and Creamy Nuts, based in Nashik and Pune respectively, under the firm Ritesh Patil & Sons. Our first quick-service restaurant is strategically located between the towns of Savda and Faizpur to attract young customers. We provide a serene, beautifully designed interior with a dark theme, spacious floor area, and a mezzanine floor, creating an inviting and stylish atmosphere.</p>
+
+        <div class="additional-content">
+            <h2>Our Vision</h2>
+            <p>Our vision is to expand our presence across more towns and cities, bringing quality food and a unique dining experience to every community we serve.</p>
+
+            <h2>Our Mission</h2>
+            <p>Our mission is to consistently deliver exceptional service, innovate our menu offerings, and maintain a vibrant and welcoming environment for our customers.</p>
+        </div>
     </section>
 
     <script>
