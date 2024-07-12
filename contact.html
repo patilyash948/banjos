@@ -31,19 +31,19 @@
         }
 
         nav {
-            flex: 1; /* Adjusts navigation to take remaining space */
+            flex: 1;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            justify-content: flex-end; /* Aligns navigation items to the right */
+            justify-content: flex-end;
             margin: 0;
             padding: 0;
         }
 
         nav ul li {
-            margin: 0 10px; /* Reduced margin for better mobile spacing */
+            margin: 0 15px;
         }
 
         nav ul li a {
@@ -55,76 +55,14 @@
             text-decoration: underline;
         }
 
-        .mobile-menu-btn {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #fff;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column; /* Stacks elements vertically on smaller screens */
-                align-items: stretch; /* Ensures items stretch to full width */
-            }
-
-            .mobile-menu-btn {
-                display: block; /* Shows mobile menu button */
-            }
-
-            nav {
-                display: none; /* Hides navigation by default */
-                width: 100%; /* Full width when displayed */
-                order: 3; /* Moves nav to the bottom */
-                margin-top: 10px; /* Adds space between nav and other elements */
-            }
-
-            nav.active {
-                display: flex; /* Shows navigation when active */
-            }
-
-            nav ul {
-                flex-direction: column; /* Stacks menu items vertically */
-                align-items: center; /* Centers menu items */
-            }
-
-            nav ul li {
-                margin: 10px 0; /* Adds vertical margin between menu items */
-            }
-        }
-
-        /* Section Styles */
+        /* Contact Form and Section Styles */
         .section {
             padding: 50px 20px;
             text-align: center;
         }
 
-        .section-intro {
-            background-color: #f4f4f4;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            margin-bottom: 20px;
-        }
-
-        .section h2 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .section p {
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 18px;
-            line-height: 1.6;
-            text-align: justify;
-        }
-
-        /* Contact Form Styles */
         .contact-form {
-            max-width: 90%; /* Adjusts form width for better mobile view */
+            max-width: 600px;
             margin: 0 auto;
             text-align: left;
             background-color: #f4f4f4;
@@ -155,7 +93,7 @@
         }
 
         .contact-form button {
-            width: 100%; /* Button stretches to full width */
+            width: 100%;
             padding: 10px;
             background-color: #333;
             color: #fff;
@@ -185,6 +123,42 @@
 
         footer a:hover {
             text-decoration: underline;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                font-size: 24px;
+                cursor: pointer;
+                color: #fff;
+                margin-bottom: 10px;
+            }
+
+            nav ul {
+                display: none;
+                width: 100%;
+                justify-content: center;
+            }
+
+            nav ul.active {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .contact-form {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -223,15 +197,15 @@
         </div>
     </section>
 
-    <script>
-        function toggleMobileMenu() {
-            const nav = document.querySelector('nav');
-            nav.classList.toggle('active');
-        }
-    </script>
-
     <footer>
         Designed and Animated by <a href="https://www.skyoudtechnologies.com">Skyoud Technologies</a>
     </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav ul');
+            nav.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
