@@ -6,98 +6,165 @@
     <title>About Us</title>
     <style>
         body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-header {
-    background-color: #000;
-    color: #fff;
-    padding: 10px 0;
-}
+        header {
+            background-color: #000; /* Black background */
+            color: #fff;
+            padding: 10px 0;
+        }
 
-.container {
-    width: 90%;
-    margin: 0 auto;
-}
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.logo img {
-    width: 150px;
-}
+        .logo img {
+            width: 150px;
+        }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
+        nav ul li {
+            margin: 0 15px;
+        }
 
-nav ul li {
-    margin: 0 15px;
-}
+        nav ul li a {
+            color: #fff; /* White text */
+            text-decoration: none;
+        }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
 
-nav ul li a:hover {
-    text-decoration: underline;
-}
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
 
-.mobile-menu-btn {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-}
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
 
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+            nav ul.active {
+                display: flex;
+            }
 
-    .mobile-menu-btn {
-        display: block;
-    }
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
 
-    nav ul {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        text-align: center;
-        background-color: #000;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-    }
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
 
-    nav ul.show {
-        display: flex;
-    }
+        .section-intro {
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
 
-    nav ul li {
-        margin: 10px 0;
-    }
+        .section h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
 
-    .contact {
-        padding: 20px 0;
-    }
+        .section p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
 
-    .contact-form {
-        max-width: 100%;
-        padding: 0 20px;
-    }
-}
+        .vision,
+        .mission {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
 
+        .vision h2,
+        .mission h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .vision p,
+        .mission p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 30px 20px;
+            }
+
+            .section p {
+                max-width: 100%;
+                margin: 0 10px;
+            }
+
+            .vision,
+            .mission {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .section {
+                padding: 20px 15px;
+            }
+
+            .section p {
+                margin: 0 10px;
+                font-size: 16px;
+            }
+
+            .vision,
+            .mission {
+                padding: 15px;
+            }
+
+            .vision h2,
+            .mission h2 {
+                font-size: 20px;
+            }
+
+            .vision p,
+            .mission p {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -118,7 +185,7 @@ nav ul li a:hover {
     </header>
 
     <section class="section section-intro">
-        <h2>About</h2>
+        <h2>Welcome to Ritesh Patil & Sons</h2>
         <p>We operate franchises of Banjo's The Food Chain and Creamy Nuts, based in Nashik and Pune respectively. Our first quick-service restaurant is strategically located between the towns of Savda and Faizpur to attract young customers. We provide a serene, beautifully designed interior with a dark theme, spacious floor area, and a mezzanine floor, creating an inviting and stylish atmosphere.</p>
     </section>
 
