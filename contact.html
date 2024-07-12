@@ -3,114 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banjo's The Food Chain</title>
+    <title>About Us</title>
     <style>
-       body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
+        /* Reset and General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-header {
-    background-color: #000;
-    color: #fff;
-    padding: 10px 0;
-}
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+        }
 
-.container {
-    width: 90%;
-    margin: 0 auto;
-}
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.logo img {
-    width: 150px;
-}
+        .logo img {
+            width: 150px;
+        }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        nav {
+            flex: 1; /* Adjusts navigation to take remaining space */
+        }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end; /* Aligns navigation items to the right */
+            margin: 0;
+            padding: 0;
+        }
 
-nav ul li {
-    margin: 0 15px;
-}
+        nav ul li {
+            margin: 0 10px; /* Reduced margin for better mobile spacing */
+        }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
 
-nav ul li a:hover {
-    text-decoration: underline;
-}
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
 
-.mobile-menu-btn {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-}
-footer {
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Stacks elements vertically on smaller screens */
+                align-items: stretch; /* Ensures items stretch to full width */
+            }
+
+            .mobile-menu-btn {
+                display: block; /* Shows mobile menu button */
+            }
+
+            nav {
+                display: none; /* Hides navigation by default */
+                width: 100%; /* Full width when displayed */
+                order: 3; /* Moves nav to the bottom */
+                margin-top: 10px; /* Adds space between nav and other elements */
+            }
+
+            nav.active {
+                display: flex; /* Shows navigation when active */
+            }
+
+            nav ul {
+                flex-direction: column; /* Stacks menu items vertically */
+                align-items: center; /* Centers menu items */
+            }
+
+            nav ul li {
+                margin: 10px 0; /* Adds vertical margin between menu items */
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .section-intro {
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .section p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            max-width: 90%; /* Adjusts form width for better mobile view */
+            margin: 0 auto;
+            text-align: left;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-form button {
+            width: 100%; /* Button stretches to full width */
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .contact-form button:hover {
+            background-color: #555;
+        }
+
+        /* Footer Styles */
+        footer {
             background: #333;
             color: #fff;
             text-align: center;
             padding: 10px 0;
             margin-top: 20px;
         }
+
         footer a {
             color: #4CAF50;
             text-decoration: none;
         }
+
         footer a:hover {
             text-decoration: underline;
         }
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .mobile-menu-btn {
-        display: block;
-    }
-
-    nav ul {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        text-align: center;
-        background-color: #000;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-    }
-
-    nav ul.show {
-        display: flex;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    .contact {
-        padding: 20px 0;
-    }
-
-    .contact-form {
-        max-width: 100%;
-        padding: 0 20px;
-    }
-}
-
     </style>
 </head>
 <body>
@@ -122,15 +197,15 @@ footer {
             <nav>
                 <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
                 <ul>
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="index.html#home">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section id="contact" class="contact">
+    <section id="contact" class="section contact">
         <div class="container">
             <h2>Contact Us</h2>
             <form class="contact-form">
@@ -150,11 +225,11 @@ footer {
 
     <script>
         function toggleMobileMenu() {
-            const nav = document.querySelector('nav ul');
-            nav.classList.toggle('show');
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('active');
         }
     </script>
-    </script>
+
     <footer>
         Designed and Animated by <a href="https://www.skyoudtechnologies.com">Skyoud Technologies</a>
     </footer>
