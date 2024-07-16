@@ -212,7 +212,7 @@ body {
                 font-size: 1.5em;
                 margin-right: 60px; /* Adjust the right margin to create space */
             }
-                    .cart-icon {
+                    #cart-icon {
     color: white; /* Replace 'blue' with the color you want */
 }
 
