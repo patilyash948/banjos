@@ -179,10 +179,7 @@ body {
         footer a:hover {
             text-decoration: underline;
         }
- #cart-icon1 {
-              display: none;
-    color: white; /* Replace 'blue' with the color you want */
- }
+ 
         /* Media Queries */
         @media (max-width: 768px) {
             nav ul {
@@ -215,6 +212,10 @@ body {
                 font-size: 1.5em;
                 margin-right: 60px; /* Adjust the right margin to create space */
             }
+                    #cart-icon1 {
+              display: none;
+    color: white; /* Replace 'blue' with the color you want */
+ }
                     #cart-icon {
     color: white; /* Replace 'blue' with the color you want */
 }
