@@ -161,15 +161,8 @@
             font-size: 24px;
             cursor: pointer;
             color: #fff;
-        }
-        .mobile-menu-btn {
-    margin-right: 10px; /* Adjust the value according to your design */
-}
-
-.mobile-menu-btn:nth-child(2) {
-    margin-left: 100px; /* Adjust the value according to your design */
-}
-
+            display: inline-block; /* Ensure they are displayed as blocks inline */
+    margin-right: 10px; /* Adjust the right margin to create space */
         footer {
             background: #333;
             color: #fff;
@@ -258,9 +251,10 @@
                     <li><a href="cart.html"><i class="fas fa-shopping-cart"></i></a></li> <!-- Cart icon added -->
                     
                 </ul>
-                <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
+                
             </nav>
             <div class="mobile-menu-btn" onclick="toggleMobileMenu()"><i class="fas fa-shopping-cart"></i></div>
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
          
          
         </div>
