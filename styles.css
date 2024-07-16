@@ -154,7 +154,17 @@ body {
             cursor: pointer;
             color: #fff;
         }
-    
+    .mobile-menu-btn1 {
+                display: none;
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                cursor: pointer;
+                z-index: 1500;
+                color: #fff;
+                font-size: 1.5em;
+                margin-right: 60px; /* Adjust the right margin to create space */
+            }
         footer {
             background: #333;
             color: #fff;
