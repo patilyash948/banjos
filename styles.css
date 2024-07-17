@@ -212,8 +212,20 @@ body {
                 font-size: 1.5em;
                 margin-right: 60px; /* Adjust the right margin to create space */
             }
+                    .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                cursor: pointer;
+                z-index: 1500;
+                color: #fff;
+                font-size: 1.5em;
+                margin-right: 60px; /* Adjust the right margin to create space */
+            }
+                    
                     #cart-icon1 {
-              display: none;
+             
     color: white; /* Replace 'blue' with the color you want */
  }
                     #cart-icon {
