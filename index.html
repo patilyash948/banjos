@@ -425,6 +425,10 @@
     </div>
     <button class="add-to-cart" onclick="addToCart('jain-banjo-url.jpg', 'Jain Banjo', 119, 'quantity-jain-banjo')">Add to Cart</button>
 </div>
+</div>
+
+
+    
 <div class="menu-category" onclick="toggleMenu('momos')">Momos</div>
 <div class="menu-item">
     <img src="steamed-momos-url.jpg" alt="Steamed Momos">
@@ -470,6 +474,10 @@
     </div>
     <button class="add-to-cart" onclick="addToCart('peri-peri-momos-url.jpg', 'Peri Peri Momos', 89, 'quantity-peri-peri-momos')">Add to Cart</button>
 </div>
+        </div>
+
+
+            
 <div class="menu-category" onclick="toggleMenu('burgers')">Burgers</div>
 <div class="menu-item">
     <img src="veg-burger-url.jpg" alt="Veg Burger">
@@ -504,82 +512,11 @@
     </div>
     <button class="add-to-cart" onclick="addToCart('paneer-burger-url.jpg', 'Paneer Burger', 89, 'quantity-paneer-burger')">Add to Cart</button>
 </div>
-<div class="menu-category" onclick="toggleMenu('rolls')">Rolls</div>
-<div class="menu-item">
-    <img src="veg-roll-url.jpg" alt="Veg Roll">
-    <h3>Veg Roll</h3>
-    <p>59</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-veg-roll', -1)">-</button>
-        <input type="number" id="quantity-veg-roll" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-veg-roll', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('veg-roll-url.jpg', 'Veg Roll', 59, 'quantity-veg-roll')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="cheese-roll-url.jpg" alt="Cheese Roll">
-    <h3>Cheese Roll</h3>
-    <p>79</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-cheese-roll', -1)">-</button>
-        <input type="number" id="quantity-cheese-roll" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-cheese-roll', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('cheese-roll-url.jpg', 'Cheese Roll', 79, 'quantity-cheese-roll')">Add to Cart</button>
-</div>
-            </div>
-
-
-
-            <div class="menu-category" onclick="toggleMenu('momos')">Momos</div>
-    <div class="menu-items" id="momos">
-        <div class="menu-item">
-            <img src="steamed-momos-url.jpg" alt="Steamed Momos">
-            <h3>Steamed Momos</h3>
-            <p>69</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity-steamed-momos', -1)">-</button>
-                <input type="number" id="quantity-steamed-momos" class="quantity-input" value="1" min="1">
-                <button onclick="updateQuantity('quantity-steamed-momos', 1)">+</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('steamed-momos-url.jpg', 'Steamed Momos', 69, 'quantity-steamed-momos')">Add to Cart</button>
-        </div>
-        <div class="menu-item">
-            <img src="fried-momos-url.jpg" alt="Fried Momos">
-            <h3>Fried Momos</h3>
-            <p>79</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity-fried-momos', -1)">-</button>
-                <input type="number" id="quantity-fried-momos" class="quantity-input" value="1" min="1">
-                <button onclick="updateQuantity('quantity-fried-momos', 1)">+</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('fried-momos-url.jpg', 'Fried Momos', 79, 'quantity-fried-momos')">Add to Cart</button>
-        </div>
-        <div class="menu-item">
-            <img src="tandoori-momos-url.jpg" alt="Tandoori Momos">
-            <h3>Tandoori Momos</h3>
-            <p>89</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity-tandoori-momos', -1)">-</button>
-                <input type="number" id="quantity-tandoori-momos" class="quantity-input" value="1" min="1">
-                <button onclick="updateQuantity('quantity-tandoori-momos', 1)">+</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('tandoori-momos-url.jpg', 'Tandoori Momos', 89, 'quantity-tandoori-momos')">Add to Cart</button>
-        </div>
-        <div class="menu-item">
-            <img src="peri-peri-momos-url.jpg" alt="Peri Peri Momos">
-            <h3>Peri Peri Momos</h3>
-            <p>89</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity-peri-peri-momos', -1)">-</button>
-                <input type="number" id="quantity-peri-peri-momos" class="quantity-input" value="1" min="1">
-                <button onclick="updateQuantity('quantity-peri-peri-momos', 1)">+</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('peri-peri-momos-url.jpg', 'Peri Peri Momos', 89, 'quantity-peri-peri-momos')">Add to Cart</button>
-        </div>
     </div>
 
-    <div class="menu-category" onclick="toggleMenu('burgers')">Burgers</div>
+
+        
+<div class="menu-category" onclick="toggleMenu('burgers')">Burgers</div>
     <div class="menu-items" id="burgers">
         <div class="menu-item">
             <img src="veg-burger-url.jpg" alt="Veg Burger">
@@ -616,44 +553,10 @@
         </div>
     </div>
 
-    <div class="menu-category" onclick="toggleMenu('rolls')">Rolls</div>
-    <div class="menu-items" id="rolls">
-        <div class="menu-item">
-            <img src="veg-roll-url.jpg" alt="Veg Roll">
-            <h3>Veg Roll</h3>
-            <p>59</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity-veg-roll', -1)">-</button>
-                <input type="number" id="quantity-veg-roll" class="quantity-input" value="1" min="1">
-                <button onclick="updateQuantity('quantity-veg-roll', 1)">+</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('veg-roll-url.jpg', 'Veg Roll', 59, 'quantity-veg-roll')">Add to Cart</button>
-        </div>
-        <div class="menu-item">
-            <img src="cheese-roll-url.jpg" alt="Cheese Roll">
-            <h3>Cheese Roll</h3>
-            <p>79</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity-cheese-roll', -1)">-</button>
-                <input type="number" id="quantity-cheese-roll" class="quantity-input" value="1" min="1">
-                <button onclick="updateQuantity('quantity-cheese-roll', 1)">+</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('cheese-roll-url.jpg', 'Cheese Roll', 79, 'quantity-cheese-roll')">Add to Cart</button>
-        </div>
-        <div class="menu-item">
-            <img src="paneer-roll-url.jpg" alt="Paneer Roll">
-            <h3>Paneer Roll</h3>
-            <p>109</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity-paneer-roll', -1)">-</button>
-                <input type="number" id="quantity-paneer-roll" class="quantity-input" value="1" min="1">
-                <button onclick="updateQuantity('quantity-paneer-roll', 1)">+</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('paneer-roll-url.jpg', 'Paneer Roll', 109, 'quantity-paneer-roll')">Add to Cart</button>
-        </div>
-    </div>
 
-    <div class="menu-category" onclick="toggleMenu('desserts')">Desserts</div>
+
+
+        <div class="menu-category" onclick="toggleMenu('desserts')">Desserts</div>
     <div class="menu-items" id="desserts">
         <div class="menu-item">
             <img src="brownie-url.jpg" alt="Brownie">
