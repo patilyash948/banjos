@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+        .cart {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart h2 {
+            margin: 0 0 20px 0;
+            font-size: 24px;
+            text-align: center;
+            color: #007bff;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+        .cart-item .quantity {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        .cart-item span {
+            flex-grow: 1;
+            margin: 0 10px;
+        }
+        .cart-total {
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        .delete-button {
+            margin-left: 10px;
+            cursor: pointer;
+            color: red;
+            font-weight: bold;
+        }
+        #go-to-payment {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+
+
+
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #000; /* Black background */
+            color: #fff;
+            padding: 10px 0;
+        }
+
+       header .container {
+            display: flex;
+            
+            padding: 0 20px;
+            justify-content: space-between;
+         
+        }
+
+        header .logo img {
+            height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff; /* White text */
+            text-decoration: none;
+        }
+
+      
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        /* Footer Styles */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+             nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 20px;
+                width: 100%;
+                background-color: #000;
+                padding: 10px 0;
+                z-index: 1000;
+            }
+            .slider {
+            position: relative;
+            max-width: 100%;
+            margin: 20px auto;
+            }
+            nav ul.active {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                cursor: pointer;
+                z-index: 1500;
+                color: #fff;
+                font-size: 1.5em;
+            }
+            .mobile-menu-btn.active {
+                color: #4CAF50;
+            }
+            nav ul li {
+                text-align: center;
+                margin: 10px 0;
+            }
+            .menu-item {
+                flex: 1 1 calc(45% - 20px);
+            }
+        }
+         .contact-form {
+                padding: 20px;
+            }
+
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .section-intro {
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .section p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .vision,
+        .mission {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .vision h2,
+        .mission h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .vision p,
+        .mission p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+        }
+             .section {
+                padding: 30px 20px;
+            }
+
+            .section p {
+                max-width: 100%;
+                margin: 0 10px;
+            }
+
+            .vision,
+            .mission {
+                padding: 20px;
+            }
+        }
+
+      
+
+        @media (max-width: 550px) {
+            .section {
+                padding: 20px 15px;
+            }
+
+            .section p {
+                margin: 0 10px;
+                font-size: 16px;
+            }
+
+            .vision,
+            .mission {
+                padding: 15px;
+            }
+
+            .vision h2,
+            .mission h2 {
+                font-size: 20px;
+            }
+
+            .vision p,
+            .mission p {
+                font-size: 14px;
+            }
+        }
+    </style>
+
+
+
+
+
+
+
+
+
+        
+    
+</head>
+<body>
+
+
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logo-url.png" alt="Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="Gallery.html">Gallery</a></li>
+                    <li><a href="Career.html">Career</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="SignUp.html">Signup</a></li>
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart"></i></a></li> <!-- Cart icon added -->
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
+        </div>
+    </header>
+
+
+
+
+
+
+    
+    <div class="cart" id="cart">
+        <h2>Cart</h2>
+        <div id="cart-items"></div>
+        <div class="cart-total">Total: ₹<span id="cart-total-price">0</span></div>
+        <button id="go-to-payment" onclick="goToPayment()">Go to Payment</button>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function displayCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+
+            let totalPrice = 0;
+
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.name}">
+                    <span>${item.name}</span>
+                    <span>₹${item.price}</span>
+                    <span class="quantity">${item.quantity}</span>
+                    <span class="delete-button" onclick="removeFromCart('${item.name}')">Delete</span>
+                `;
+                cartItems.appendChild(cartItem);
+
+                totalPrice += item.price * item.quantity;
+            });
+
+            document.getElementById('cart-total-price').innerText = totalPrice;
+        }
+
+        function removeFromCart(itemName) {
+            // Find the item in cart
+            cart.forEach((item, index) => {
+                if (item.name === itemName) {
+                    item.quantity--;
+
+                    // If quantity is zero, remove the item from cart
+                    if (item.quantity === 0) {
+                        cart.splice(index, 1);
+                    }
+                }
+            });
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function goToPayment() {
+            window.location.href = 'payment.html';
+        }
+
+        displayCart();
+    </script>
+
+<script>
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav ul');
+            nav.classList.toggle('active');
+        }
+    </script>
+
+    
+</body>
+</html>
