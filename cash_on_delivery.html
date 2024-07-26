@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash on Delivery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Confirm Cash on Delivery</h2>
+        <button class="btn" onclick="confirmOrder()">Confirm Order</button>
+    </div>
+
+    <script>
+        function confirmOrder() {
+            const orderId = 'ORD' + Math.floor(Math.random() * 1000000);
+            alert(`Order successfully booked! Your Order ID is ${orderId}.`);
+            localStorage.removeItem('cart'); // Clear the cart
+            window.location.href = 'index.html'; // Redirect to home page or another relevant page
+        }
+    </script>
+</body>
+</html>
