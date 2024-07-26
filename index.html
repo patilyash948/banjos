@@ -95,6 +95,24 @@
             background-color: #45a049; /* Darker green */
         }
 
+
+    #goToCartButton {
+            background-color: #008CBA; /* Blue */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        #goToCartButton:hover {
+            background-color: #007bb5; /* Darker blue */
+        }
+
     </style>
 
 
@@ -592,6 +610,7 @@
             <span class="close" onclick="closeModal()">&times;</span>
             <p id="notificationMessage"></p>
             <button id="okButton" onclick="closeModal()">OK</button>
+            <button id="goToCartButton" onclick="goToCart()">Go to Cart</button>
         </div>
     </div>
 
@@ -763,6 +782,14 @@ s0.parentNode.insertBefore(s1,s0);
         }
     }
 </script>
+
+
+    <script>
+    function goToCart() {
+        window.location.href = 'cart.html'; // Redirect to your cart page
+    }
+</script>
+
 
 
 
