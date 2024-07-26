@@ -164,6 +164,39 @@
             text-decoration: underline;
         }
 
+
+
+
+        .address-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .address-section h3 {
+            margin: 0 0 20px 0;
+            font-size: 20px;
+            color: #007bff;
+        }
+        .address-section label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .address-section input, 
+        .address-section select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .address-section {
+            display: flex;
+            justify-content: space-between;
+        }
+        }
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -279,6 +312,39 @@
             }
         }
 
+
+
+
+
+        .address-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .address-section h3 {
+            margin: 0 0 20px 0;
+            font-size: 20px;
+            color: #007bff;
+        }
+        .address-section label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .address-section input, 
+        .address-section select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .address-section {
+            display: flex;
+            justify-content: space-between;
+        }
+
       
 
         @media (max-width: 550px) {
@@ -342,6 +408,35 @@
             <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
         </div>
     </header>
+
+
+    <div class="address-section">
+        <h3>Address Details</h3>
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" placeholder="Enter your address" required>
+
+        <label for="pincode">Pincode:</label>
+        <input type="text" id="pincode" placeholder="Enter your pincode" required>
+
+        <label for="mobile-number">Mobile Number:</label>
+        <input type="tel" id="mobile-number" placeholder="Enter your mobile number" required>
+
+        <div class="payment-options">
+            <div>
+                <label>
+                    <input type="radio" name="payment" value="cod" checked> Cash on Delivery
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="radio" name="payment" value="online"> Online Payment
+                </label>
+            </div>
+        </div>
+    </div>
 
 
 
