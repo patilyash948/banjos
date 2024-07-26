@@ -430,7 +430,8 @@
 
     
 <div class="menu-category" onclick="toggleMenu('momos')">Momos</div>
-<div class="menu-item">
+<div class="menu-items" id="momos">
+    <div class="menu-item">
     <img src="steamed-momos-url.jpg" alt="Steamed Momos">
     <h3>Steamed Momos</h3>
     <p>69</p>
@@ -479,7 +480,8 @@
 
             
 <div class="menu-category" onclick="toggleMenu('burgers')">Burgers</div>
-<div class="menu-item">
+<div class="menu-items" id="burgers">
+    <div class="menu-item">
     <img src="veg-burger-url.jpg" alt="Veg Burger">
     <h3>Veg Burger</h3>
     <p>49</p>
@@ -514,44 +516,6 @@
 </div>
     </div>
 
-
-        
-<div class="menu-category" onclick="toggleMenu('burgers')">Burgers</div>
-    <div class="menu-items" id="burgers">
-        <div class="menu-item">
-            <img src="veg-burger-url.jpg" alt="Veg Burger">
-            <h3>Veg Burger</h3>
-            <p>49</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity-veg-burger', -1)">-</button>
-                <input type="number" id="quantity-veg-burger" class="quantity-input" value="1" min="1">
-                <button onclick="updateQuantity('quantity-veg-burger', 1)">+</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('veg-burger-url.jpg', 'Veg Burger', 49, 'quantity-veg-burger')">Add to Cart</button>
-        </div>
-        <div class="menu-item">
-            <img src="cheese-burger-url.jpg" alt="Cheese Burger">
-            <h3>Cheese Burger</h3>
-            <p>69</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity-cheese-burger', -1)">-</button>
-                <input type="number" id="quantity-cheese-burger" class="quantity-input" value="1" min="1">
-                <button onclick="updateQuantity('quantity-cheese-burger', 1)">+</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('cheese-burger-url.jpg', 'Cheese Burger', 69, 'quantity-cheese-burger')">Add to Cart</button>
-        </div>
-        <div class="menu-item">
-            <img src="paneer-burger-url.jpg" alt="Paneer Burger">
-            <h3>Paneer Burger</h3>
-            <p>89</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity-paneer-burger', -1)">-</button>
-                <input type="number" id="quantity-paneer-burger" class="quantity-input" value="1" min="1">
-                <button onclick="updateQuantity('quantity-paneer-burger', 1)">+</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('paneer-burger-url.jpg', 'Paneer Burger', 89, 'quantity-paneer-burger')">Add to Cart</button>
-        </div>
-    </div>
 
 
 
