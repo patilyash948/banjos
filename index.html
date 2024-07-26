@@ -374,6 +374,22 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
+
+    <script>
+        function toggleMenu(category) {
+            var x = document.getElementById(category);
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function addToCart(itemName, itemPrice, itemImage) {
+            // Add item to the cart
+            alert(itemName + " has been added to your cart.");
+        }
+    </script>
    
 <!--End of Tawk.to Script-->
 </body>
