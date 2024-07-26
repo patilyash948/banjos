@@ -46,11 +46,12 @@
             <div class="menu-category" onclick="toggleMenu('beverages')">Beverages</div>
             <div class="menu-items" id="beverages">
                 <div class="menu-item">
-                    <img src="thick-cold-coffee-url.jpg" width="100" height="100" alt="Thick Cold Coffee">
-                    <h3>Thick Cold Coffee</h3>
-                    <p>69</p>
-                    <button onclick="addToCart('Thick Cold Coffee', 69, 'thick-cold-coffee-url.jpg')">Add to Cart</button>
-                </div>
+            <img src="thick-cold-coffee-url.jpg" width="100" height="100" alt="Thick Cold Coffee">
+            <h3>Thick Cold Coffee</h3>
+            <p>69</p>
+            <input type="number" id="thick-cold-coffee-quantity" min="1" value="1">
+            <button onclick="addToCart('Thick Cold Coffee', 69, 'thick-cold-coffee-url.jpg', document.getElementById('thick-cold-coffee-quantity').value)">Add to Cart</button>
+        </div>
                 <div class="menu-item">
                     <img src="hot-chocolate-url.jpg" alt="Hot Chocolate">
                     <h3>Hot Chocolate</h3>
