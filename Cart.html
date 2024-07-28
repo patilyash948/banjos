@@ -280,6 +280,14 @@
                         <option value="Kochur BK">Kochur BK (कोचूर बुद्रुक)</option>
                         <option value="Rozode">Rozode (रोझोदे)</option>
                         <option value="Chinawal">Chinawal (चिनावल)</option>
+                        <option value="Anwarde">Anwarde (आणवदे)</option>
+                        <option value="Ardhan">Ardhan (आर्धन)</option>
+                        <option value="Varad">Varad (वर्डे)</option>
+                        <option value="Gate">Gate (गेटे)</option>
+                        <option value="Kalakhed">Kalakhed (कळाखेडे)</option>
+                        <option value="Kharkod">Kharkod (खारकोद)</option>
+                        <option value="Kinod">Kinod (किनोद)</option>
+                        <option value="Shelave BK">Shelave BK (शेलावे बुद्रुक)</option>
                         <option value="Pimpund">Pimprud (पिंप्रूड)</option>
                         <option value="Nimbhora">Nimbhora (निंभोरा)</option>
                         <option value="Khirada">Khiroda (खिरोडी )</option>
@@ -380,8 +388,10 @@
             
             if (specialLocations.includes(location)) {
                 minimumOrderAmount = 300;
+                alert(`Minimum order amount for ${location} is ₹300.`);
             } else {
                 minimumOrderAmount = 200;
+                alert(`Minimum order amount for ${location} is ₹200.`);
             }
         }
 
