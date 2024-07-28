@@ -82,7 +82,8 @@
             font-size: 16px;
             color: #333;
         }
-        .address-form input {
+        .address-form input,
+        .address-form select {
             width: 95%;
             padding: 10px;
             margin: 5px 0;
@@ -266,7 +267,29 @@
             <label for="name">Name</label>
             <input type="text" id="name" placeholder="Name" required>
             <label for="location">Location</label>
-            <input type="text" id="location" placeholder="Location" required>
+            <select id="location" required>
+                <option value="">Select Location</option>
+                <option value="Faizpur">Faizpur</option>
+                <option value="Savda">Savda</option>
+                <option value="Naghode Bk">Naghode Bk</option>
+                <option value="Aamade">Aamade</option>
+                <option value="Bamnod">Bamnod</option>
+                <option value="Nhavi">Nhavi</option>
+                <option value="Ham bardi">Ham bardi</option>
+                <option value="Hingona">Hingona</option>
+                <option value="Kochur BK">Kochur BK</option>
+                <option value="Rozade">Rozade</option>
+                <option value="Chinawal">Chinawal</option>
+                <option value="Pimpund">Pimpund</option>
+                <option value="Nimbhora">Nimbhora</option>
+                <option value="Khirada">Khirada</option>
+                <option value="Thongavan">Thongavan</option>
+                <option value="Virada">Virada</option>
+                <option value="Maskawall">Maskawall</option>
+                <option value="Tandalwadi">Tandalwadi</option>
+                <option value="Kumbharkheda">Kumbharkheda</option>
+                <option value="Got gaate">Got gaate</option>
+            </select>
             <label for="mobile">Mobile Number</label>
             <input type="text" id="mobile" placeholder="Mobile Number" required>
             <label for="pincode">Pincode</label>
