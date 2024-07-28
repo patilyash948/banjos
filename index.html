@@ -201,7 +201,7 @@
                     <!--<button class="add-to-cart" onclick="addToCart('thick-cold-coffee-url.jpg', 'Thick Cold Coffee', 69, 'quantity-thick-cold-coffee')">Add to Cart</button>-->
 			<button onclick="addToCart('thick-cold-coffee-url.jpg', 'Thick Cold Coffee', 69)">Add to Cart</button>
                 </div>
-		    </div>
+		   
                 <div class="menu-item"> 
                     <img src="hot-chocolate-url.jpg" alt="Hot Chocolate">
     <h3>Hot Chocolate</h3>
@@ -811,7 +811,7 @@ s0.parentNode.insertBefore(s1,s0);
             });
 
         if (!found) {
-            cart.push({ name: itemName, price: itemPrice, quantity: quantity, imageUrl: imageUrl });
+            cart.push({ name: itemName, price: itemPrice, quantity: 1, imageUrl: imageUrl });
         }
 
         localStorage.setItem('cart', JSON.stringify(cart));
