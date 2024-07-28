@@ -267,7 +267,7 @@
             <label for="name">Name</label>
             <input type="text" id="name" placeholder="Name" required>
             <label for="location">Location</label>
-            <select id="location" required>
+            <select id="location" onchange="updateMinimumOrderAmount()" required>
                 <option value="">Select Location</option>
                         <option value="Faizpur">Faizpur (फैजपुर)</option>
                         <option value="Savda">Savda (सावदा)</option>
@@ -294,6 +294,8 @@
             <input type="text" id="address" placeholder="Address" required>
             <label for="mobile">Mobile Number</label>
             <input type="text" id="mobile" placeholder="Mobile Number" required maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            <label for="pincode">Pincode</label>
+            <input type="text" id="pincode" placeholder="Pincode" required>
         </div>
         
         <h2>Cart</h2>
@@ -304,6 +306,7 @@
 
     <script>
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let minimumOrderAmount = 200;
 
         function displayCart() {
             const cartItems = document.getElementById('cart-items');
@@ -345,6 +348,11 @@
         }
 
         function goToPayment() {
+            const totalPrice = parseInt(document.getElementById('cart-total-price').innerText);
+            if (totalPrice < minimumOrderAmount) {
+                alert(`Minimum order amount is ₹${minimumOrderAmount}. Please add more items to your cart.`);
+                return;
+            }
             window.location.href = 'payment.html';
         }
 
@@ -363,6 +371,17 @@
                 alert('Address saved successfully!');
             } else {
                 alert('Please fill all the fields.');
+            }
+        }
+
+        function updateMinimumOrderAmount() {
+            const location = document.getElementById('location').value;
+            const specialLocations = ["Gate", "Kumbharkheda", "Hingona", "Nimbhora", "Bamnod", "Tandalwadi", "Chinawal"];
+            
+            if (specialLocations.includes(location)) {
+                minimumOrderAmount = 300;
+            } else {
+                minimumOrderAmount = 200;
             }
         }
 
