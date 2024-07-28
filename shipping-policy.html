@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shipping Policy</title>
    <style>
-       body {
+/* styles.css */
+body {
     font-family: Arial, sans-serif;
     background-color: #f8f8f8;
     color: #333;
@@ -18,6 +19,21 @@ header {
     color: #f0f0f0;
     padding: 10px 0;
     text-align: center;
+    position: relative;
+}
+
+header .back-home {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: #f0f0f0;
+    font-size: 18px;
+}
+
+header .back-home::before {
+    content: "← ";
 }
 
 main {
@@ -52,10 +68,12 @@ a:hover {
 </head>
 <body>
     <header>
+        <a href="home.html" class="back-home">Home</a>
         <h1>Shipping Policy</h1>
     </header>
     <main>
         <section>
+            
             <h2>SHIPPING FREE?</h2>
             <p>Yes, shipping is FREE all over India.</p>
         </section>
