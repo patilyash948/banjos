@@ -3,124 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your external CSS file -->
-    <title>Banjos</title>
-
-<style>
-       
-
-        
-        .quantity-controls {
+    <title>Cart</title>
+    <style>
+        /* Existing Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+        .cart {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart h2 {
+            margin: 0 0 20px 0;
+            font-size: 24px;
+            text-align: center;
+            color: #007bff;
+        }
+        .cart-item {
             display: flex;
             align-items: center;
-            border: 2px solid #007bff;
-            border-radius: 5px;
-            overflow: hidden;
-            padding: 5px;
-            background-color: #f0f8ff;
-            margin-right: 20px; /* Add space between quantity controls and button */
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
         }
-        .quantity-controls button {
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+        .cart-item .quantity {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        .cart-item span {
+            flex-grow: 1;
+            margin: 0 10px;
+        }
+        .cart-total {
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        .delete-button {
+            margin-left: 10px;
+            cursor: pointer;
+            color: red;
+            font-weight: bold;
+        }
+        #go-to-payment, #cash-on-delivery {
+            display: block;
+            width: 100%;
+            padding: 10px;
             background-color: #007bff;
             color: #fff;
             border: none;
-            padding: 5px 10px;
-            cursor: pointer;
+            border-radius: 5px;
             font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
         }
-        .quantity-controls button:active {
+        .address-form {
+            margin-top: 20px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .address-form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 16px;
+            color: #333;
+        }
+        .address-form input,
+        .address-form select {
+            width: 95%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        /* Header Styles */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 0;
+        }
+        header .container {
+            display: flex;
+            padding: 0 20px;
+            justify-content: space-between;
+        }
+        header .logo img {
+            height: 40px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        /* Back to Home Button */
+        #back-to-home {
+            display: block;
+            width: 50px;
+            height: 40px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 2%;
+            font-size: 15px;
+            cursor: pointer;
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            text-align: center;
+            line-height: 50px;
+        }
+        #back-to-home:hover {
             background-color: #0056b3;
         }
-        .quantity-input {
-            width: 50px;
-            padding: 5px;
-            text-align: center;
-            border: none;
-            font-size: 18px;
-            border-left: 2px solid #007bff;
-            border-right: 2px solid #007bff;
-            background-color: #fff;
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 20px;
+                width: 100%;
+                background-color: #000;
+                padding: 10px 0;
+                z-index: 1000;
+            }
+            .slider {
+                position: relative;
+                max-width: 100%;
+                margin: 20px auto;
+            }
+            nav ul.active {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                cursor: pointer;
+                z-index: 1500;
+                color: #fff;
+                font-size: 1.5em;
+            }
+            .mobile-menu-btn.active {
+                color: #4CAF50;
+            }
+            nav ul li {
+                text-align: center;
+                margin: 10px 0;
+            }
+            .menu-item {
+                flex: 1 1 calc(45% - 20px);
+            }
         }
-        /* Modal Styles */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+        @media (max-width: 550px) {
+            .section {
+                padding: 20px 15px;
+            }
+            .section p {
+                margin: 0 10px;
+                font-size: 16px;
+            }
+            .vision,
+            .mission {
+                padding: 15px;
+            }
+            .vision h2,
+            .mission h2 {
+                font-size: 20px;
+            }
+            .vision p,
+            .mission p {
+                font-size: 14px;
+            }
         }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 400px;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-
-#okButton {
-            background-color: #4CAF50; /* Green */
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        #okButton:hover {
-            background-color: #45a049; /* Darker green */
-        }
-
-
-    #goToCartButton {
-            background-color: #008CBA; /* Blue */
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        #goToCartButton:hover {
-            background-color: #007bb5; /* Darker blue */
-        }
-
     </style>
-
-
-    
 </head>
 <body>
     <header>
-     <div class="container">
+        <div class="container">
             <div class="logo">
                 <img src="logo-url.png" alt="Logo">
             </div>
@@ -132,672 +251,150 @@
                     <li><a href="Career.html">Career</a></li>
                     <li><a href="login.html">Login</a></li>
                     <li><a href="SignUp.html">Signup</a></li>
-                    <li><a href="cart.html"><i class="fas fa-shopping-cart" id="cart-icon1" ></i></a></li> <!-- Cart icon added -->
-                    
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart"></i></a></li>
                 </ul>
-                
             </nav>
-         <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
-         <div class="mobile-menu-btn1">
-    <a href="cart.html"><i class="fas fa-shopping-cart" id="cart-icon"></i></a>
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
         </div>
     </header>
-    <main>
-       <div class="slider">
-            <div class="slides">
-                <img src="slide1-url.jpg" alt="Slide 1" class="active">
-                <img src="slide2-url.jpg" alt="Slide 2">
-                <img src="slide3-url.jpg" alt="Slide 3">
-            </div>
-            <div class="welcome">
-                <h1>Welcome to Banjo's the food Chain</h1>
-            </div>
+
+    <!-- Back to Home Button -->
+    <button id="back-to-home" onclick="goToHome()">Back</button>
+
+    <div class="cart" id="cart">
+        <div class="address-form">
+            <h2>Shipping Address</h2>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Name" required>
+            <label for="location">Location</label>
+            <select id="location" onchange="updateMinimumOrderAmount()" required>
+                <option value="">Select Location</option>
+                        <option value="Faizpur">Faizpur (फैजपुर)</option>
+                        <option value="Savda">Savda (सावदा)</option>
+                        <option value="Waghode Bk">Waghode Bk (वाघोदे  बुद्रुक)</option>
+                        <option value="Aamade">Aamode (आमोदे)</option>
+                        <option value="Bamnod">Bamnod (बामनोद)</option>
+                        <option value="Nhavi">Nhavi (न्हावी)</option>
+                        <option value="Ham bardi">Ham bardi (हंबर्डी)</option>
+                        <option value="Hingona">Hingona (हिंगोना)</option>
+                        <option value="Kochur BK">Kochur BK (कोचूर बुद्रुक)</option>
+                        <option value="Rozode">Rozode (रोझोदे)</option>
+                        <option value="Chinawal">Chinawal (चिनावल)</option>
+                        <option value="Pimpund">Pimprud (पिंप्रूड)</option>
+                        <option value="Nimbhora">Nimbhora (निंभोरा)</option>
+                        <option value="Khirada">Khiroda (खिरोडी )</option>
+                        <option value="Thongavan">Thorgavan (थोरगवान)</option>
+                        <option value="Virada">Viroda (वीरोदा)</option>
+                        <option value="Maskawall">Maskawad (मस्कावद)</option>
+                        <option value="Tandalwadi">Tandalwadi (तांडलवाडी)</option>
+                        <option value="Kumbharkheda">Kumbharkheda (कुंभारखेड़ा)</option>
+                        <option value="Got gaate">Gaate (गाते)</option>
+            </select>
+            <label for="address">Area Address</label>
+            <input type="text" id="address" placeholder="Address" required>
+            <label for="mobile">Mobile Number</label>
+            <input type="text" id="mobile" placeholder="Mobile Number" required maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            <label for="pincode">Pincode</label>
+            <input type="text" id="pincode" placeholder="Pincode" required>
         </div>
-        <div class="menu">
-            <div class="menu-category" onclick="toggleMenu('beverages')">Beverages</div>
-            <div class="menu-items" id="beverages">
-                <div class="menu-item">
-                    <img src="thick-cold-coffee-url.jpg" width="100" height="100" alt="Thick Cold Coffee">
-                    <h3>Thick Cold Coffee</h3>
-                    <p>69</p>
-                    <div class="quantity-controls">
-                        <button onclick="updateQuantity('quantity-thick-cold-coffee', -1)">-</button>
-                        <input type="number" id="quantity-thick-cold-coffee" class="quantity-input" value="1" min="1">
-                        <button onclick="updateQuantity('quantity-thick-cold-coffee', 1)">+</button>
-                    </div>
-                    <button class="add-to-cart" onclick="addToCart('thick-cold-coffee-url.jpg', 'Thick Cold Coffee', 69, 'quantity-thick-cold-coffee')">Add to Cart</button>
-                </div>
-                <div class="menu-item"> 
-                    <img src="hot-chocolate-url.jpg" alt="Hot Chocolate">
-    <h3>Hot Chocolate</h3>
-    <p>69</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-hot-chocolate', -1)">-</button>
-        <input type="number" id="quantity-hot-chocolate" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-hot-chocolate', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('hot-chocolate-url.jpg', 'Hot Chocolate', 69, 'quantity-hot-chocolate')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="lemon-iced-tea-url.jpg" alt="Lemon Iced Tea">
-    <h3>Lemon Iced Tea</h3>
-    <p>79</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-lemon-iced-tea', -1)">-</button>
-        <input type="number" id="quantity-lemon-iced-tea" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-lemon-iced-tea', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('lemon-iced-tea-url.jpg', 'Lemon Iced Tea', 79, 'quantity-lemon-iced-tea')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="strawberry-iced-tea-url.jpg" alt="Strawberry Iced Tea">
-    <h3>Strawberry Iced Tea</h3>
-    <p>109</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-strawberry-iced-tea', -1)">-</button>
-        <input type="number" id="quantity-strawberry-iced-tea" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-strawberry-iced-tea', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('strawberry-iced-tea-url.jpg', 'Strawberry Iced Tea', 109, 'quantity-strawberry-iced-tea')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="mint-mojito-url.jpg" alt="Mint Mojito">
-    <h3>Mint Mojito</h3>
-    <p>119</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-mint-mojito', -1)">-</button>
-        <input type="number" id="quantity-mint-mojito" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-mint-mojito', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('mint-mojito-url.jpg', 'Mint Mojito', 119, 'quantity-mint-mojito')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="blueberry-mojito-url.jpg" alt="Blueberry Mojito">
-    <h3>Blueberry Mojito</h3>
-    <p>119</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-blueberry-mojito', -1)">-</button>
-        <input type="number" id="quantity-blueberry-mojito" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-blueberry-mojito', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('blueberry-mojito-url.jpg', 'Blueberry Mojito', 119, 'quantity-blueberry-mojito')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="mango-milkshake-url.jpg" alt="Mango Milkshake">
-    <h3>Mango Milkshake</h3>
-    <p>119</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-mango-milkshake', -1)">-</button>
-        <input type="number" id="quantity-mango-milkshake" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-mango-milkshake', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('mango-milkshake-url.jpg', 'Mango Milkshake', 119, 'quantity-mango-milkshake')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="strawberry-milkshake-url.jpg" alt="Strawberry Milkshake">
-    <h3>Strawberry Milkshake</h3>
-    <p>119</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-strawberry-milkshake', -1)">-</button>
-        <input type="number" id="quantity-strawberry-milkshake" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-strawberry-milkshake', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('strawberry-milkshake-url.jpg', 'Strawberry Milkshake', 119, 'quantity-strawberry-milkshake')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="oreo-milkshake-url.jpg" alt="Oreo Milkshake">
-    <h3>Oreo Milkshake</h3>
-    <p>139</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-oreo-milkshake', -1)">-</button>
-        <input type="number" id="quantity-oreo-milkshake" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-oreo-milkshake', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('oreo-milkshake-url.jpg', 'Oreo Milkshake', 139, 'quantity-oreo-milkshake')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="kitkat-milkshake-url.jpg" alt="Kitkat Milkshake">
-    <h3>Kitkat Milkshake</h3>
-    <p>139</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-kitkat-milkshake', -1)">-</button>
-        <input type="number" id="quantity-kitkat-milkshake" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-kitkat-milkshake', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('kitkat-milkshake-url.jpg', 'Kitkat Milkshake', 139, 'quantity-kitkat-milkshake')">Add to Cart</button>
-</div>
-            </div>
-
-
-                
-<div class="menu-category" onclick="toggleMenu('sandwiches')">Sandwiches</div>
-<div class="menu-items" id="sandwiches">
-    <div class="menu-item">
-    <img src="chilli-garlic-toast-url.jpg" alt="Chilli Garlic Toast">
-    <h3>Chilli Garlic Toast</h3>
-    <p>49</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-chilli-garlic-toast', -1)">-</button>
-        <input type="number" id="quantity-chilli-garlic-toast" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-chilli-garlic-toast', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('chilli-garlic-toast-url.jpg', 'Chilli Garlic Toast', 49, 'quantity-chilli-garlic-toast')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="veg-grilled-sandwich-url.jpg" alt="Veg Grilled Sandwich">
-    <h3>Veg Grilled Sandwich</h3>
-    <p>79</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-veg-grilled-sandwich', -1)">-</button>
-        <input type="number" id="quantity-veg-grilled-sandwich" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-veg-grilled-sandwich', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('veg-grilled-sandwich-url.jpg', 'Veg Grilled Sandwich', 79, 'quantity-veg-grilled-sandwich')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="veg-cheese-grilled-sandwich-url.jpg" alt="Veg Cheese Grilled Sandwich">
-    <h3>Veg Cheese Grilled Sandwich</h3>
-    <p>99</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-veg-cheese-grilled-sandwich', -1)">-</button>
-        <input type="number" id="quantity-veg-cheese-grilled-sandwich" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-veg-cheese-grilled-sandwich', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('veg-cheese-grilled-sandwich-url.jpg', 'Veg Cheese Grilled Sandwich', 99, 'quantity-veg-cheese-grilled-sandwich')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="peri-peri-sandwich-url.jpg" alt="Peri Peri Sandwich">
-    <h3>Peri Peri Sandwich</h3>
-    <p>119</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-peri-peri-sandwich', -1)">-</button>
-        <input type="number" id="quantity-peri-peri-sandwich" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-peri-peri-sandwich', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('peri-peri-sandwich-url.jpg', 'Peri Peri Sandwich', 119, 'quantity-peri-peri-sandwich')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="veggie-delight-url.jpg" alt="Veggie Delight">
-    <h3>Veggie Delight</h3>
-    <p>119</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-veggie-delight', -1)">-</button>
-        <input type="number" id="quantity-veggie-delight" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-veggie-delight', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('veggie-delight-url.jpg', 'Veggie Delight', 119, 'quantity-veggie-delight')">Add to Cart</button>
-</div>
-</div>
-
-            
-<div class="menu-category" onclick="toggleMenu('pizza')">Pizza</div>
-<div class="menu-items" id="pizza">
-    <div class="menu-item">
-    <img src="regular-pizza-url.jpg" alt="Regular Pizza">
-    <h3>Regular Pizza</h3>
-    <p>49</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-regular-pizza', -1)">-</button>
-        <input type="number" id="quantity-regular-pizza" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-regular-pizza', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('regular-pizza-url.jpg', 'Regular Pizza', 49, 'quantity-regular-pizza')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="cheese-pizza-url.jpg" alt="Cheese Pizza">
-    <h3>Cheese Pizza</h3>
-    <p>79</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-cheese-pizza', -1)">-</button>
-        <input type="number" id="quantity-cheese-pizza" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-cheese-pizza', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('cheese-pizza-url.jpg', 'Cheese Pizza', 79, 'quantity-cheese-pizza')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="onion-capsicum-pizza-url.jpg" alt="Onion Capsicum Pizza">
-    <h3>Onion Capsicum Pizza</h3>
-    <p>99</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-onion-capsicum-pizza', -1)">-</button>
-        <input type="number" id="quantity-onion-capsicum-pizza" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-onion-capsicum-pizza', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('onion-capsicum-pizza-url.jpg', 'Onion Capsicum Pizza', 99, 'quantity-onion-capsicum-pizza')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="sweet-corn-pizza-url.jpg" alt="Sweet Corn Pizza">
-    <h3>Sweet Corn Pizza</h3>
-    <p>99</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-sweet-corn-pizza', -1)">-</button>
-        <input type="number" id="quantity-sweet-corn-pizza" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-sweet-corn-pizza', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('sweet-corn-pizza-url.jpg', 'Sweet Corn Pizza', 99, 'quantity-sweet-corn-pizza')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="farm-fresh-pizza-url.jpg" alt="Farm Fresh Pizza">
-    <h3>Farm Fresh Pizza</h3>
-    <p>109</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-farm-fresh-pizza', -1)">-</button>
-        <input type="number" id="quantity-farm-fresh-pizza" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-farm-fresh-pizza', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('farm-fresh-pizza-url.jpg', 'Farm Fresh Pizza', 109, 'quantity-farm-fresh-pizza')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="onion-capsicum-double-cheese-url.jpg" alt="Onion Capsicum Double Cheese">
-    <h3>Onion Capsicum Double Cheese</h3>
-    <p>139</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-onion-capsicum-double-cheese', -1)">-</button>
-        <input type="number" id="quantity-onion-capsicum-double-cheese" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-onion-capsicum-double-cheese', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('onion-capsicum-double-cheese-url.jpg', 'Onion Capsicum Double Cheese', 139, 'quantity-onion-capsicum-double-cheese')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="sweet-corn-double-cheese-url.jpg" alt="Sweet Corn Double Cheese">
-    <h3>Sweet Corn Double Cheese</h3>
-    <p>139</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-sweet-corn-double-cheese', -1)">-</button>
-        <input type="number" id="quantity-sweet-corn-double-cheese" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-sweet-corn-double-cheese', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('sweet-corn-double-cheese-url.jpg', 'Sweet Corn Double Cheese', 139, 'quantity-sweet-corn-double-cheese')">Add to Cart</button>
-</div>
-</div>
-
-    
-<div class="menu-category" onclick="toggleMenu('banjos')">Banjos</div>
-<div class="menu-items" id="banjos">
-    <div class="menu-item">
-    <img src="potato-cheese-banjo-url.jpg" alt="Potato Cheese Banjo">
-    <h3>Potato Cheese Banjo</h3>
-    <p>79</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-potato-cheese-banjo', -1)">-</button>
-        <input type="number" id="quantity-potato-cheese-banjo" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-potato-cheese-banjo', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('potato-cheese-banjo-url.jpg', 'Potato Cheese Banjo', 79, 'quantity-potato-cheese-banjo')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="corn-cheese-banjo-url.jpg" alt="Corn Cheese Banjo">
-    <h3>Corn Cheese Banjo</h3>
-    <p>89</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-corn-cheese-banjo', -1)">-</button>
-        <input type="number" id="quantity-corn-cheese-banjo" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-corn-cheese-banjo', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('corn-cheese-banjo-url.jpg', 'Corn Cheese Banjo', 89, 'quantity-corn-cheese-banjo')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="paneer-burji-banjo-url.jpg" alt="Paneer Burji Banjo">
-    <h3>Paneer Burji Banjo</h3>
-    <p>109</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-paneer-burji-banjo', -1)">-</button>
-        <input type="number" id="quantity-paneer-burji-banjo" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-paneer-burji-banjo', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('paneer-burji-banjo-url.jpg', 'Paneer Burji Banjo', 109, 'quantity-paneer-burji-banjo')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="jain-banjo-url.jpg" alt="Jain Banjo">
-    <h3>Jain Banjo</h3>
-    <p>119</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-jain-banjo', -1)">-</button>
-        <input type="number" id="quantity-jain-banjo" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-jain-banjo', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('jain-banjo-url.jpg', 'Jain Banjo', 119, 'quantity-jain-banjo')">Add to Cart</button>
-</div>
-</div>
-
-
-    
-<div class="menu-category" onclick="toggleMenu('momos')">Momos</div>
-<div class="menu-items" id="momos">
-    <div class="menu-item">
-    <img src="steamed-momos-url.jpg" alt="Steamed Momos">
-    <h3>Steamed Momos</h3>
-    <p>69</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-steamed-momos', -1)">-</button>
-        <input type="number" id="quantity-steamed-momos" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-steamed-momos', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('steamed-momos-url.jpg', 'Steamed Momos', 69, 'quantity-steamed-momos')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="fried-momos-url.jpg" alt="Fried Momos">
-    <h3>Fried Momos</h3>
-    <p>79</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-fried-momos', -1)">-</button>
-        <input type="number" id="quantity-fried-momos" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-fried-momos', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('fried-momos-url.jpg', 'Fried Momos', 79, 'quantity-fried-momos')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="tandoori-momos-url.jpg" alt="Tandoori Momos">
-    <h3>Tandoori Momos</h3>
-    <p>89</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-tandoori-momos', -1)">-</button>
-        <input type="number" id="quantity-tandoori-momos" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-tandoori-momos', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('tandoori-momos-url.jpg', 'Tandoori Momos', 89, 'quantity-tandoori-momos')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="peri-peri-momos-url.jpg" alt="Peri Peri Momos">
-    <h3>Peri Peri Momos</h3>
-    <p>89</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-peri-peri-momos', -1)">-</button>
-        <input type="number" id="quantity-peri-peri-momos" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-peri-peri-momos', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('peri-peri-momos-url.jpg', 'Peri Peri Momos', 89, 'quantity-peri-peri-momos')">Add to Cart</button>
-</div>
-        </div>
-
-
-            
-<div class="menu-category" onclick="toggleMenu('burgers')">Burgers</div>
-<div class="menu-items" id="burgers">
-    <div class="menu-item">
-    <img src="veg-burger-url.jpg" alt="Veg Burger">
-    <h3>Veg Burger</h3>
-    <p>49</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-veg-burger', -1)">-</button>
-        <input type="number" id="quantity-veg-burger" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-veg-burger', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('veg-burger-url.jpg', 'Veg Burger', 49, 'quantity-veg-burger')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="cheese-burger-url.jpg" alt="Cheese Burger">
-    <h3>Cheese Burger</h3>
-    <p>69</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-cheese-burger', -1)">-</button>
-        <input type="number" id="quantity-cheese-burger" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-cheese-burger', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('cheese-burger-url.jpg', 'Cheese Burger', 69, 'quantity-cheese-burger')">Add to Cart</button>
-</div>
-<div class="menu-item">
-    <img src="paneer-burger-url.jpg" alt="Paneer Burger">
-    <h3>Paneer Burger</h3>
-    <p>89</p>
-    <div class="quantity-controls">
-        <button onclick="updateQuantity('quantity-paneer-burger', -1)">-</button>
-        <input type="number" id="quantity-paneer-burger" class="quantity-input" value="1" min="1">
-        <button onclick="updateQuantity('quantity-paneer-burger', 1)">+</button>
-    </div>
-    <button class="add-to-cart" onclick="addToCart('paneer-burger-url.jpg', 'Paneer Burger', 89, 'quantity-paneer-burger')">Add to Cart</button>
-</div>
-    </div>
-
-
-
-
-
-        <div class="menu-category" onclick="toggleMenu('desserts')">Desserts</div>
-    <div class="menu-items" id="desserts">
-        <div class="menu-item">
-            <img src="brownie-url.jpg" alt="Brownie">
-            <h3>Brownie</h3>
-            <p>49</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity-brownie', -1)">-</button>
-                <input type="number" id="quantity-brownie" class="quantity-input" value="1" min="1">
-                <button onclick="updateQuantity('quantity-brownie', 1)">+</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('brownie-url.jpg', 'Brownie', 49, 'quantity-brownie')">Add to Cart</button>
-        </div>
-        <div class="menu-item">
-            <img src="brownie-with-icecream-url.jpg" alt="Brownie with Ice Cream">
-            <h3>Brownie with Ice Cream</h3>
-            <p>79</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity-brownie-with-icecream', -1)">-</button>
-                <input type="number" id="quantity-brownie-with-icecream" class="quantity-input" value="1" min="1">
-                <button onclick="updateQuantity('quantity-brownie-with-icecream', 1)">+</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('brownie-with-icecream-url.jpg', 'Brownie with Ice Cream', 79, 'quantity-brownie-with-icecream')">Add to Cart</button>
-        </div>
-        <div class="menu-item">
-            <img src="black-forest-cake-url.jpg" alt="Black Forest Cake">
-            <h3>Black Forest Cake</h3>
-            <p>79</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity-black-forest-cake', -1)">-</button>
-                <input type="number" id="quantity-black-forest-cake" class="quantity-input" value="1" min="1">
-                <button onclick="updateQuantity('quantity-black-forest-cake', 1)">+</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('black-forest-cake-url.jpg', 'Black Forest Cake', 79, 'quantity-black-forest-cake')">Add to Cart</button>
-        </div>
-        <div class="menu-item">
-            <img src="choco-lava-cake-url.jpg" alt="Choco Lava Cake">
-            <h3>Choco Lava Cake</h3>
-            <p>89</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity-choco-lava-cake', -1)">-</button>
-                <input type="number" id="quantity-choco-lava-cake" class="quantity-input" value="1" min="1">
-                <button onclick="updateQuantity('quantity-choco-lava-cake', 1)">+</button>
-            </div>
-            <button class="add-to-cart" onclick="addToCart('choco-lava-cake-url.jpg', 'Choco Lava Cake', 89, 'quantity-choco-lava-cake')">Add to Cart</button>
-        </div>
-    </div>
-
-        </div>
-
-
-
-<div id="notificationModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <p id="notificationMessage"></p>
-            <button id="okButton" onclick="closeModal()">OK</button>
-            <button id="goToCartButton" onclick="goToCart()">Go to Cart</button>
-        </div>
-    </div>
-
-
-
-
         
-    </main>
-
-    <footer>
-        Designed and Animated by <a href="https://www.skyoudtechnologies.com">Skyoud Technologies</a>
-    </footer>
+        <h2>Cart</h2>
+        <div id="cart-items"></div>
+        <div class="cart-total">Total: ₹<span id="cart-total-price">0</span></div>
+        <button id="go-to-payment" onclick="goToPayment()">Go to Payment</button>
+    </div>
 
     <script>
-        function toggleMobileMenu() {
-            const menu = document.querySelector('nav ul');
-            menu.classList.toggle('active');
-            const btn = document.querySelector('.mobile-menu-btn');
-            btn.classList.toggle('active');
-        }
-
-        function toggleMenu(category) {
-            const menu = document.getElementById(category);
-            menu.classList.toggle('active');
-        }
-    </script>
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slides img');
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) {
-                    slide.classList.add('active');
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        setInterval(nextSlide, 4000);
-    </script>
-
-    <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/65d57ebf8d261e1b5f62f2b4/1hn4ve84k';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-
-
-
-
-
-<script>
-        function toggleMobileMenu() {
-            const menu = document.querySelector('nav ul');
-            menu.classList.toggle('active');
-            const btn = document.querySelector('.mobile-menu-btn');
-            btn.classList.toggle('active');
-        }
-
-        function toggleMenu(category) {
-            const menu = document.getElementById(category);
-            menu.classList.toggle('active');
-        }
-    </script>
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slides img');
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) {
-                    slide.classList.add('active');
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        setInterval(nextSlide, 4000);
-    </script>
-
-    <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/65d57ebf8d261e1b5f62f2b4/1hn4ve84k';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-   
-
-<script>
-    function toggleMenu(category) {
-        const items = document.getElementById(category);
-        items.style.display = items.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function updateQuantity(inputId, change) {
-        const input = document.getElementById(inputId);
-        let quantity = parseInt(input.value);
-        quantity += change;
-        if (quantity < 1) {
-            quantity = 1;
-        }
-        input.value = quantity;
-    }
-
-    function addToCart(imageUrl, itemName, itemPrice, quantityInputId) {
-        const quantity = parseInt(document.getElementById(quantityInputId).value);
-        if (isNaN(quantity) || quantity < 1) {
-            alert('Please enter a valid quantity.');
-            return;
-        }
-
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let minimumOrderAmount = 200;
 
-        let found = false;
-        cart.forEach(item => {
-            if (item.name === itemName) {
-                item.quantity += quantity;
-                found = true;
+        function displayCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+
+            let totalPrice = 0;
+
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.name}">
+                    <span>${item.name}</span>
+                    <span>₹${item.price}</span>
+                    <span class="quantity">${item.quantity}</span>
+                    <span class="delete-button" onclick="removeFromCart('${item.name}')">Delete</span>
+                `;
+                cartItems.appendChild(cartItem);
+
+                totalPrice += item.price * item.quantity;
+            });
+
+            document.getElementById('cart-total-price').innerText = totalPrice;
+        }
+
+        function removeFromCart(itemName) {
+            cart.forEach((item, index) => {
+                if (item.name === itemName) {
+                    item.quantity--;
+
+                    if (item.quantity === 0) {
+                        cart.splice(index, 1);
+                    }
+                }
+            });
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function goToPayment() {
+            const totalPrice = parseInt(document.getElementById('cart-total-price').innerText);
+            if (totalPrice < minimumOrderAmount) {
+                alert(`Minimum order amount is ₹${minimumOrderAmount}. Please add more items to your cart.`);
+                return;
             }
-        });
-
-        if (!found) {
-            cart.push({ name: itemName, price: itemPrice, quantity: quantity, imageUrl: imageUrl });
+            window.location.href = 'payment.html';
         }
 
-        localStorage.setItem('cart', JSON.stringify(cart));
-        showModal(itemName + ' has been added to your cart.');
-    }
-
-    function showModal(message) {
-        const modal = document.getElementById('notificationModal');
-        document.getElementById('notificationMessage').innerText = message;
-        modal.style.display = 'block';
-    }
-
-    function closeModal() {
-        const modal = document.getElementById('notificationModal');
-        modal.style.display = 'none';
-    }
-
-    // Close the modal when clicking outside of it
-    window.onclick = function(event) {
-        const modal = document.getElementById('notificationModal');
-        if (event.target === modal) {
-            modal.style.display = 'none';
+        function goToCashOnDelivery() {
+            window.location.href = 'cash_on_delivery.html';
         }
-    }
-</script>
 
+        function saveAddress() {
+            const name = document.getElementById('name').value;
+            const location = document.getElementById('location').value;
+            const mobile = document.getElementById('mobile').value;
+            const pincode = document.getElementById('pincode').value;
 
-    <script>
-    function goToCart() {
-        window.location.href = 'cart.html'; // Redirect to your cart page
-    }
-</script>
+            if (name && location && mobile && pincode) {
+                localStorage.setItem('address', JSON.stringify({ name, location, mobile, pincode }));
+                alert('Address saved successfully!');
+            } else {
+                alert('Please fill all the fields.');
+            }
+        }
 
+        function updateMinimumOrderAmount() {
+            const location = document.getElementById('location').value;
+            const specialLocations = ["Gate", "Kumbharkheda", "Hingona", "Nimbhora", "Bamnod", "Tandalwadi", "Chinawal"];
+            
+            if (specialLocations.includes(location)) {
+                minimumOrderAmount = 300;
+            } else {
+                minimumOrderAmount = 200;
+            }
+        }
 
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav ul');
+            nav.classList.toggle('active');
+        }
 
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
 
-
-
-
-    
-   
-<!--End of Tawk.to Script-->
+        displayCart();
+    </script>
 </body>
 </html>
