@@ -297,11 +297,15 @@
         </div>
     </header>
 
+    <div class="service-availability">
+        Service available from 10 AM to 10 PM, Monday to Sunday
+    </div>
+
     <button id="back-to-home" onclick="goToHome()">Back</button>
 
-    <div class="cart" id="cart">
+    <div class="cart">
+        <h2>Address Form</h2>
         <div class="address-form">
-            <h2>Delivery Address</h2>
             <label for="name">Name</label>
             <input type="text" id="name" placeholder="Name" required>
             <label for="location">Location</label>
@@ -333,17 +337,12 @@
         <div class="cart-total">Total: ₹<span id="cart-total-price">0</span></div>
         <button id="go-to-payment" onclick="goToPayment()">Go to Payment</button>
 
-        <!-- Service Availability Message -->
-        <div class="service-availability">
-            Service available from 10 AM to 10 PM, Monday to Sunday
-        </div>
-    </div>
-
-    <!-- Modal for Minimum Order Amount -->
-    <div id="minOrderModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <p id="minOrderMessage"></p>
+        <!-- Modal for Minimum Order Amount -->
+        <div id="minOrderModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <p id="minOrderMessage"></p>
+            </div>
         </div>
     </div>
 
