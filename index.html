@@ -793,13 +793,21 @@ s0.parentNode.insertBefore(s1,s0);
 
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        let found = false;
+        /* let found = false;
         cart.forEach(item => {
             if (item.name === itemName) {
                 item.quantity += quantity;
                 found = true;
             }
-        });
+        });*/
+
+	    let found = false;
+            cart.forEach(item => {
+                if (item.name === itemName) {
+                    item.quantity++;
+                    found = true;
+                }
+            });
 
         if (!found) {
             cart.push({ name: itemName, price: itemPrice, quantity: quantity, imageUrl: imageUrl });
