@@ -6,7 +6,7 @@
     <title>Terms & Conditions</title>
     <style>
 
-        body {
+       body {
     font-family: Arial, sans-serif;
     background-color: #f8f8f8;
     color: #333;
@@ -17,8 +17,25 @@
 header {
     background-color: #000000;
     color: #f0f0f0;
-    padding: 10px 0;
+    padding: 1px 20px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+header .back-home {
+    position: absolute;
+    left: 20px;
+    text-decoration: none;
+    color: #f0f0f0;
+    font-size: 18px;
+}
+
+
+header .back-home::before {
+    content: "← ";
 }
 
 main {
@@ -37,7 +54,7 @@ h1, h2 {
 
 ul {
     list-style-type: disc;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 a {
