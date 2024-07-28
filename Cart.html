@@ -480,11 +480,11 @@
                     <img src="${item.imageUrl}" alt="${item.name}">
                     <span>${item.name}</span>
                     <span>₹${item.price}</span>
-                    <div class="quantity-controls">
+                    
                         <button onclick="decreaseQuantity('${item.name}')">-</button>
                         <span class="quantity">${item.quantity}</span>
                         <button onclick="increaseQuantity('${item.name}')">+</button>
-                    </div>
+                 
                     
                     <span class="delete-button" onclick="removeFromCart('${item.name}')">Delete</span>
                 `;
