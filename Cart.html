@@ -492,8 +492,7 @@
             <input type="text" id="address" placeholder="Address" required>
             <label for="mobile">Mobile Number</label>
             <input type="text" id="mobile" placeholder="Mobile Number" required maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-            <label for="pincode">Pincode</label>
-            <input type="text" id="pincode" placeholder="Pincode" required>
+            
         </div>
 
         <h2>Cart</h2>
@@ -579,14 +578,29 @@
             displayCart();
         }
 
-        function goToPayment() {
+      /*  function goToPayment() {
             const totalPrice = parseInt(document.getElementById('cart-total-price').innerText);
             if (totalPrice < minimumOrderAmount) {
                 showModal(`Minimum order amount is ₹${minimumOrderAmount}. Please add more items to your cart.`);
                 return;
             }
             window.location.href = 'payment.html';
-        }
+        }*/
+
+        function goToPayment() {
+    const totalPrice = parseInt(document.getElementById('cart-total-price').innerText);
+    if (totalPrice < minimumOrderAmount) {
+        showModal(`Minimum order amount is ₹${minimumOrderAmount}. Please add more items to your cart.`);
+        return;
+    }
+
+    // Construct the PhonePe payment URL with the entered amount
+    const phonePePaymentUrl = `upi://pay?pa=9563882222-2@ybl&pn=Chetan%20Patil&mc=0000&mode=02&purpose=00&am=${totalPrice}`;
+
+    // Redirect to the PhonePe payment URL
+    window.location.href = phonePePaymentUrl;
+}
+
 
         function goToCashOnDelivery() {
             window.location.href = 'cash_on_delivery.html';
