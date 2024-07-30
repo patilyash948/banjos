@@ -1245,7 +1245,7 @@ s0.parentNode.insertBefore(s1,s0);
             });
 
         if (!found) {
-            cart.push({ name: itemName, price: itemPrice, quantity: 1, imageUrl: imageUrl });
+            cart.push({ name: itemName, price: itemPrice, quantity: 1,  });
         }
 
         localStorage.setItem('cart', JSON.stringify(cart));
