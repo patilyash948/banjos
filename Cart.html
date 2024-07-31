@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
     <title>Cart</title>
     <style>
         body {
@@ -513,6 +515,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 
 <script>
+    // Initialize cart from localStorage or set to an empty array
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let minimumOrderAmount = 200;
 
@@ -568,16 +571,7 @@
     }
 
     function removeFromCart(itemName) {
-        cart.forEach((item, index) => {
-            if (item.name === itemName) {
-                item.quantity--;
-
-                if (item.quantity === 0) {
-                    cart.splice(index, 1);
-                }
-            }
-        });
-
+        cart = cart.filter(item => item.name !== itemName); // Simplified removal
         localStorage.setItem('cart', JSON.stringify(cart));
         displayCart();
     }
@@ -601,7 +595,9 @@
         const transactionId = Date.now(); // Example transaction ID
         const signature = generateSignature(transactionId, totalPrice);
 
-        const phonePePaymentUrl = `upi://pay?pa=M22FYAZX3D3WS@phonepe&pn=YourBusinessName&mc=0000&tid=${transactionId}&tr=${transactionId}&tn=Order Payment&am=${totalPrice}&cu=INR&url=https://your-callback-url.com&signature=${signature}`;
+        const phonePePaymentUrl = `upi://pay?pa=M22FYAZX3D3WS@phonepe&pn=YourBusinessName&mc=0000&tid=${transactionId}&tr=${transactionId}&tn=Order%20Payment&am=${totalPrice}&cu=INR&url=https://your-callback-url.com&signature=${signature}`;
+
+        console.log("Redirecting to:", phonePePaymentUrl); // Debug output
 
         window.location.href = phonePePaymentUrl;
     }
@@ -651,6 +647,7 @@
 
     displayCart();
 </script>
+
 
 
 </body>
