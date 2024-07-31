@@ -509,165 +509,149 @@
         </div>
     </div>
 
-    <script>
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let minimumOrderAmount = 200;
+ <!-- Include CryptoJS library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 
-        function displayCart() {
-            const cartItems = document.getElementById('cart-items');
-            cartItems.innerHTML = '';
+<script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let minimumOrderAmount = 200;
 
-            let totalPrice = 0;
+    function displayCart() {
+        const cartItems = document.getElementById('cart-items');
+        cartItems.innerHTML = '';
 
-            cart.forEach(item => {
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.innerHTML = `
-                    <span>${item.name}</span>
-                    <span>₹${item.price}</span>
-                    <div class="quantity-controls">
-                        <button onclick="decreaseQuantity('${item.name}')">-</button>
-                        <span class="quantity">${item.quantity}</span>
-                        <button onclick="increaseQuantity('${item.name}')">+</button>
-                    </div>
-                    <span class="delete-button" onclick="removeFromCart('${item.name}')">Delete</span>
-                `;
-                cartItems.appendChild(cartItem);
+        let totalPrice = 0;
 
-                totalPrice += item.price * item.quantity;
-            });
+        cart.forEach(item => {
+            const cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
+            cartItem.innerHTML = `
+                <span>${item.name}</span>
+                <span>₹${item.price}</span>
+                <div class="quantity-controls">
+                    <button onclick="decreaseQuantity('${item.name}')">-</button>
+                    <span class="quantity">${item.quantity}</span>
+                    <button onclick="increaseQuantity('${item.name}')">+</button>
+                </div>
+                <span class="delete-button" onclick="removeFromCart('${item.name}')">Delete</span>
+            `;
+            cartItems.appendChild(cartItem);
 
-            document.getElementById('cart-total-price').innerText = totalPrice;
-        }
-        function increaseQuantity(itemName) {
-            cart.forEach(item => {
-                if (item.name === itemName) {
-                    item.quantity++;
-                }
-            });
-            localStorage.setItem('cart', JSON.stringify(cart));
-            displayCart();
-        }
+            totalPrice += item.price * item.quantity;
+        });
 
-        function decreaseQuantity(itemName) {
-            cart.forEach((item, index) => {
-                if (item.name === itemName) {
-                    if (item.quantity > 1) {
-                        item.quantity--;
-                    } else {
-                        cart.splice(index, 1);
-                    }
-                }
-            });
-            localStorage.setItem('cart', JSON.stringify(cart));
-            displayCart();
-        }
-
-        function removeFromCart(itemName) {
-            cart.forEach((item, index) => {
-                if (item.name === itemName) {
-                    item.quantity--;
-
-                    if (item.quantity === 0) {
-                        cart.splice(index, 1);
-                    }
-                }
-            });
-
-            localStorage.setItem('cart', JSON.stringify(cart));
-            displayCart();
-        }
-
-      /*  function goToPayment() {
-            const totalPrice = parseInt(document.getElementById('cart-total-price').innerText);
-            if (totalPrice < minimumOrderAmount) {
-                showModal(`Minimum order amount is ₹${minimumOrderAmount}. Please add more items to your cart.`);
-                return;
-            }
-            window.location.href = 'payment.html';
-        }*/
-
-        function goToPayment() {
-    const totalPrice = parseInt(document.getElementById('cart-total-price').innerText);
-    if (totalPrice < minimumOrderAmount) {
-        showModal(`Minimum order amount is ₹${minimumOrderAmount}. Please add more items to your cart.`);
-        return;
+        document.getElementById('cart-total-price').innerText = totalPrice;
     }
 
-
-const merchantId = "M22FYAZX3D3WS"; // Your Merchant ID
-const saltKey = "ed909460-f05b-459a-b22c-4f96c6d5eabf"; // Your salt key
-
-function generateSignature(transactionId, amount) {
-    // Create a string to hash
-    const data = `${merchantId}|${transactionId}|${amount}|${saltKey}`;
-    
-    // Use SHA256 to hash the string (you can use a library like CryptoJS)
-    const hash = CryptoJS.SHA256(data).toString(CryptoJS.enc.Hex);
-    
-    return hash;
-}
-
-
-
-            
-    // Construct the PhonePe payment URL with the entered amount
-    const phonePePaymentUrl = `upi://pay?pa=${merchantId}@phonepe&pn=YourBusinessName&mc=0000&tid=${transactionId}&tr=${transactionId}&tn=Order Payment&am=${totalPrice}&cu=INR&url=https://your-callback-url.com&signature=${signature}`;
-
-    // Redirect to the PhonePe payment URL
-    window.location.href = phonePePaymentUrl;
-}
-
-
-        function goToCashOnDelivery() {
-            window.location.href = 'cash_on_delivery.html';
-        }
-
-        function saveAddress() {
-            const name = document.getElementById('name').value;
-            const location = document.getElementById('location').value;
-            const mobile = document.getElementById('mobile').value;
-            const pincode = document.getElementById('pincode').value;
-
-            if (name && location && mobile && pincode) {
-                localStorage.setItem('address', JSON.stringify({ name, location, mobile, pincode }));
-                alert('Address saved successfully!');
-            } else {
-                alert('Please fill all the fields.');
+    function increaseQuantity(itemName) {
+        cart.forEach(item => {
+            if (item.name === itemName) {
+                item.quantity++;
             }
-        }
-
-        function updateMinimumOrderAmount() {
-            const location = document.getElementById('location').value;
-            const specialLocations = ["Gate", "Kumbharkheda", "Hingona", "Nimbhora", "Bamnod", "Tandalwadi", "Chinawal"];
-
-            if (specialLocations.includes(location)) {
-                minimumOrderAmount = 300;
-            } else {
-                minimumOrderAmount = 200;
-            }
-        }
-
-        function toggleMobileMenu() {
-            const nav = document.querySelector('nav ul');
-            nav.classList.toggle('active');
-        }
-
-        function goToHome() {
-            window.location.href = 'index.html';
-        }
-
-        function showModal(message) {
-            document.getElementById('minOrderMessage').innerText = message;
-            document.getElementById('minOrderModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('minOrderModal').style.display = 'none';
-        }
-
+        });
+        localStorage.setItem('cart', JSON.stringify(cart));
         displayCart();
-    </script>
+    }
+
+    function decreaseQuantity(itemName) {
+        cart.forEach((item, index) => {
+            if (item.name === itemName) {
+                if (item.quantity > 1) {
+                    item.quantity--;
+                } else {
+                    cart.splice(index, 1);
+                }
+            }
+        });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        displayCart();
+    }
+
+    function removeFromCart(itemName) {
+        cart.forEach((item, index) => {
+            if (item.name === itemName) {
+                item.quantity--;
+
+                if (item.quantity === 0) {
+                    cart.splice(index, 1);
+                }
+            }
+        });
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        displayCart();
+    }
+
+    function generateSignature(transactionId, amount) {
+        const merchantId = "M22FYAZX3D3WS"; // Your Merchant ID
+        const saltKey = "ed909460-f05b-459a-b22c-4f96c6d5eabf"; // Your salt key
+
+        const data = `${merchantId}|${transactionId}|${amount}|${saltKey}`;
+        const hash = CryptoJS.SHA256(data).toString(CryptoJS.enc.Hex);
+        return hash;
+    }
+
+    function goToPayment() {
+        const totalPrice = parseInt(document.getElementById('cart-total-price').innerText);
+        if (totalPrice < minimumOrderAmount) {
+            showModal(`Minimum order amount is ₹${minimumOrderAmount}. Please add more items to your cart.`);
+            return;
+        }
+
+        const transactionId = Date.now(); // Example transaction ID
+        const signature = generateSignature(transactionId, totalPrice);
+
+        const phonePePaymentUrl = `upi://pay?pa=M22FYAZX3D3WS@phonepe&pn=YourBusinessName&mc=0000&tid=${transactionId}&tr=${transactionId}&tn=Order Payment&am=${totalPrice}&cu=INR&url=https://your-callback-url.com&signature=${signature}`;
+
+        window.location.href = phonePePaymentUrl;
+    }
+
+    function goToCashOnDelivery() {
+        window.location.href = 'cash_on_delivery.html';
+    }
+
+    function saveAddress() {
+        const name = document.getElementById('name').value;
+        const location = document.getElementById('location').value;
+        const mobile = document.getElementById('mobile').value;
+        const pincode = document.getElementById('pincode').value;
+
+        if (name && location && mobile && pincode) {
+            localStorage.setItem('address', JSON.stringify({ name, location, mobile, pincode }));
+            alert('Address saved successfully!');
+        } else {
+            alert('Please fill all the fields.');
+        }
+    }
+
+    function updateMinimumOrderAmount() {
+        const location = document.getElementById('location').value;
+        const specialLocations = ["Gate", "Kumbharkheda", "Hingona", "Nimbhora", "Bamnod", "Tandalwadi", "Chinawal"];
+
+        minimumOrderAmount = specialLocations.includes(location) ? 300 : 200;
+    }
+
+    function toggleMobileMenu() {
+        const nav = document.querySelector('nav ul');
+        nav.classList.toggle('active');
+    }
+
+    function goToHome() {
+        window.location.href = 'index.html';
+    }
+
+    function showModal(message) {
+        document.getElementById('minOrderMessage').innerText = message;
+        document.getElementById('minOrderModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('minOrderModal').style.display = 'none';
+    }
+
+    displayCart();
+</script>
+
 
 </body>
 </html>
