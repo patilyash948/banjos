@@ -26,7 +26,7 @@ $paymentParams = [
     'orderId' => $orderId,
     'transactionAmount' => $transactionAmount,
     'checksumHash' => $checksum,
-    'phonePeUrl' => 'https://yourdomain.000webhostapp.com/trail 1-payment gateway/submit_payment.php' // Replace with actual endpoint
+    'phonePeUrl' => 'https://banjoscafe.in/submit_payment.php' // Replace with actual endpoint
 ];
 
 // Return the payment parameters as JSON
