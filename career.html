@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhonePe Payment Integration</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>PhonePe Payment Integration</h1>
+
+    <button id="payWithPhonePe">Pay with PhonePe</button>
+
+    <script>
+        document.getElementById("payWithPhonePe").addEventListener("click", async () => {
+            try {
+                const response = await axios.post('https://newinnovationproject.000webhostapp.com/initiate_payment.php', {
+                    orderId: 'ORDER_ID', // Replace with a unique order ID
+                    transactionAmount: 10000 // Amount in paise (10000 paise = 100 INR)
+                });
+
+                const paymentParams = response.data;
+
+                if (paymentParams.error) {
+                    console.error('Error from server:', paymentParams.error);
+                    return;
+                }
+
+                // Create a form and submit it to initiate payment
+                const form = document.createElement("form");
+                form.setAttribute("method", "POST");
+                form.setAttribute("action", paymentParams.phonePeUrl);
+
+                for (let key in paymentParams) {
+                    if (paymentParams.hasOwnProperty(key) && key !== 'phonePeUrl') {
+                        const hiddenField = document.createElement("input");
+                        hiddenField.setAttribute("type", "hidden");
+                        hiddenField.setAttribute("name", key);
+                        hiddenField.setAttribute("value", paymentParams[key]);
+                        form.appendChild(hiddenField);
+                    }
+                }
+
+                document.body.appendChild(form);
+                form.submit();
+            } catch (error) {
+                console.error('Error initiating payment:', error);
+            }
+        });
+    </script>
+</body>
+</html>
