@@ -594,8 +594,25 @@
         return;
     }
 
+
+const merchantId = "M22FYAZX3D3WS"; // Your Merchant ID
+const saltKey = "ed909460-f05b-459a-b22c-4f96c6d5eabf"; // Your salt key
+
+function generateSignature(transactionId, amount) {
+    // Create a string to hash
+    const data = `${merchantId}|${transactionId}|${amount}|${saltKey}`;
+    
+    // Use SHA256 to hash the string (you can use a library like CryptoJS)
+    const hash = CryptoJS.SHA256(data).toString(CryptoJS.enc.Hex);
+    
+    return hash;
+}
+
+
+
+            
     // Construct the PhonePe payment URL with the entered amount
-    const phonePePaymentUrl = `upi://pay?pa=9563882222-2@ybl&pn=Chetan%20Patil&mc=0000&mode=02&purpose=00&am=${totalPrice}`;
+    const phonePePaymentUrl = `upi://pay?pa=${merchantId}@phonepe&pn=YourBusinessName&mc=0000&tid=${transactionId}&tr=${transactionId}&tn=Order Payment&am=${totalPrice}&cu=INR&url=https://your-callback-url.com&signature=${signature}`;
 
     // Redirect to the PhonePe payment URL
     window.location.href = phonePePaymentUrl;
